@@ -17,16 +17,16 @@
 - ### Controller : PairMatchingController
   - [ ] 메인기능 실행 - #run()
 - ### Service : PairMatchingService
-  - [ ] 페어 매칭 기능 - #createPairs()
+  - [x] 페어 매칭 기능 - #createPairs()
   - [ ] 페어 조회 기능 - #findPair()
   - [ ] 페어 초기화 기능 - #initPair()
 - ### Repository : PairMatchingRepository
   - [ ] 미션으로 매칭된 페어들 조회 - #getPairByMission()
-  - [ ] 생성된 페어들 저장 - #save()
+  - [x] 생성된 페어들 저장 - #save()
   - [ ] 페어 전체 삭제 - #deleteAll()
 ---
 ## 미션 매칭한 후 매칭된 미션을 저장 domain : Mission
-- [ ] 미션의 이름을 받아오는 기능 - #getName()
+- [x] 미션의 이름을 받아오는 기능 - #getName()
 - ### Service : MissionService
   - [x] 미션 매칭 - #createMission()
   - [x] 매칭된 미션 전체 삭제 - #deleteAll()
@@ -42,10 +42,10 @@
   - [x] 매칭 기록 존재 여부 조회 - #isMatched()
 ---
 ## 프론트엔드 크루들의 이름을 저장하는 일급컬렉션 ClassName : FrontMember
-- [ ] 프론트엔드 크루원들의 이름 받아오기 - getFrontNames()
+- [x] 프론트엔드 크루원들의 페어매칭 결과 받아오기 - getPair()
 ---
 ## 백엔드 크루들의 이름을 저장하는 일급컬렉션 ClassName : BackMember
-- [ ] 백엔드 크루원들의 이름 받아오기 - getBackNames()
+- [x] 백엔드 크루원들의 페어매칭 결과 받아오기 - getPair()
 ---
 ## 파일을 읽어들이는 클래스 ClassName : FileReader
 - [x] `backend-crew.md` 를 읽어들이는 기능 - #readBackCrew()
