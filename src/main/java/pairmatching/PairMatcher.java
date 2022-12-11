@@ -1,18 +1,35 @@
-package pairmatching.model;
+package pairmatching;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import pairmatching.model.*;
 
 import java.util.List;
 
-public class CrewManager {
+public class PairMatcher {
 
     List<String> CrewNames;
     List<Crew> shuffledCrews;
+    List<Pair> pairs;
 
     Course course;
+    Level level;
 
-    public void readCrews(Course course) {
+    public PairMatcher(Course course, Level level) {
+        validateInfo(course, level);
         this.course = course;
+        this.level = level;
+    }
+
+    private void validateInfo(Course course, Level level) {
+        if(course == null) {
+            throw new IllegalArgumentException("[ERROR] 해당 코스는 존재하지 않습니다.");
+        }
+        if(level == null) {
+            throw new IllegalArgumentException("[ERROR] 해당 레벨은 존재하지 않습니다.");
+        }
+    }
+
+    public void readCrews() {
         CrewReader crewReader = new CrewReader();
         crewReader.readCrews(course);
         CrewNames = crewReader.getCrews();
@@ -24,11 +41,10 @@ public class CrewManager {
         }
     }
 
-    public List<Pair> matchPair(List<Crew> crews) {
-        List<Pair> pairs = null;
-        for (int i = 0; i < crews.size(); i += 2) {
-            pairs.add(new Pair(crews.get(i), crews.get(i + 1)));
-            if (canNotBeDiveded(crews, pairs, i)) break;
+    public List<Pair> matchPair() {
+        for (int i = 0; i < shuffledCrews.size(); i += 2) {
+            pairs.add(new Pair(shuffledCrews.get(i), shuffledCrews.get(i + 1)));
+            if (canNotBeDiveded(shuffledCrews, pairs, i)) break;
         }
         return pairs;
     }
@@ -57,16 +73,24 @@ public class CrewManager {
         return true;
     }
 
-    public List<Pair> reMatch(List<Crew> crews) {
+    public List<Pair> match() {
         shuffledCrews();
-        return matchPair(crews);
+        return matchPair();
     }
+
 
     public void initPair() {
-
+        pairs.clear();
     }
 
-    public List<Crew> getShuffledCrews() {
-        return shuffledCrews;
+    public boolean isExist() {
+        if(pairs.size() != 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public List<Pair> getPairs() {
+        return pairs;
     }
 }
