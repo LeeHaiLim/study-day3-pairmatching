@@ -1,9 +1,9 @@
 # 기능목록
 
 ## 입력을 담당하는 클래스 ClassName : InputView
-- [ ] 메인 기능 입력받기 - #insertMainFunctionInput()
-- [ ] 과정, 레벨, 미션 입력받기 - #insertDetails()
-- [ ] 재매칭 여부 입력받기 - #insertReMatchingOrNot()
+- [x] 메인 기능 입력받기 - #insertMainFunctionInput()
+- [x] 과정, 레벨, 미션 입력받기 - #insertDetails()
+- [x] 재매칭 여부 입력받기 - #insertReMatchingOrNot()
 ---
 ## 출력을 담당하는 클래스 ClassName : OutputView
 - [ ] 매칭 결과 출력 - #printMatcingResult()
