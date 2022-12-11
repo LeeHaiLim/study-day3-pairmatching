@@ -1,11 +1,11 @@
 package pairmatching.domain;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Pair {
-    private final Set<Crew> pair = new HashSet<>();
+    private final List<Crew> pair = new ArrayList<>();
 
     private Pair(List<Crew> crews) {
         crews.stream().forEach(pair::add);
@@ -15,13 +15,21 @@ public class Pair {
         return new Pair(crews);
     }
 
+    public boolean isContain(Crew crew) {
+        return pair.contains(crew);
+    }
+
     public boolean isSamePair(List<Crew> crews) {
         long count = crews.stream()
-                .filter(crew -> pair.contains(crew))
+                .filter(this::isContain)
                 .count();
-        if (count < 2) {
-            return false;
+        if (count >= 2) {
+            return true;
         }
-        return true;
+        return false;
+    }
+
+    public List<String> getPair() {
+        return pair.stream().map(Crew::getName).collect(Collectors.toList());
     }
 }

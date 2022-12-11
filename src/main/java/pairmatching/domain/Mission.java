@@ -17,6 +17,21 @@ public class Mission {
         return new Mission(Course.from(course), Level.from(leven), MissionName.from(name));
     }
 
+    public boolean isSameLevel(Mission mission) {
+        if (mission.course.equals(this.course) && (mission.level.equals(this.level))) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isBackendCourse() {
+        return this.course == Course.BACKEND;
+    }
+
+    public boolean isFrontendCourse() {
+        return this.course == Course.FRONTEND;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(course, level, name);

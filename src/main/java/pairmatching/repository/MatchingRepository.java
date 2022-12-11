@@ -15,7 +15,50 @@ public class MatchingRepository {
         matchingResults.put(mission, pairs);
     }
 
+    public List<Pair> findByMission(Mission mission) {
+        return matchingResults.get(mission);
+    }
     public boolean hasPair(Mission mission) {
         return matchingResults.containsKey(mission);
+    }
+
+    public boolean hasSameLevelSamePair(Mission mission, List<Crew> crews) {
+        boolean result = matchingResults.keySet().stream()
+                .filter(key -> key.isSameLevel(mission))
+                .noneMatch(key -> hasSamePair(key, crews));
+        if (result) {
+            return false;
+        }
+        return true;
+    }
+
+    private boolean hasSamePair(Mission key, List<Crew> crews) {
+        List<Pair> pairs = matchingResults.get(key);
+        if (crews.size() % 2 == 0) {
+            return hasSamePairEven(pairs, crews);
+        }
+        return hasSamePairOdd(pairs, crews);
+
+    }
+
+    private boolean hasSamePairEven(List<Pair> pairs, List<Crew> crews) {
+        for (int i = 0; i < crews.size(); i += 2) {
+            Pair pair = pairs.get(i / 2);
+            if (pair.isSamePair(crews.subList(i, i + 2))) {
+                return true;
+            };
+        }
+        return false;
+    }
+
+    private boolean hasSamePairOdd(List<Pair> pairs, List<Crew> crews) {
+        if (hasSamePairEven(pairs.subList(0, pairs.size()-1), crews.subList(0, crews.size()-3))){
+            return true;
+        }
+        Pair pair = pairs.get(pairs.size()-1);
+        if (pair.isSamePair(crews.subList(crews.size()-3, crews.size()))) {
+            return true;
+        }
+        return false;
     }
 }

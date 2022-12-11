@@ -8,6 +8,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 import pairmatching.Application;
+import pairmatching.service.CrewSaveService;
 
 class ApplicationTest extends NsTest {
 
@@ -33,6 +34,7 @@ class ApplicationTest extends NsTest {
             }
         );
     }
+
 
     @Override
     public void runMain() {

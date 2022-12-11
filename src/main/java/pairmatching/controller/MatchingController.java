@@ -2,6 +2,8 @@ package pairmatching.controller;
 
 import pairmatching.domain.Command;
 import pairmatching.domain.Mission;
+import pairmatching.domain.Pair;
+import pairmatching.dto.MatchResultDto;
 import pairmatching.service.MatchingService;
 import pairmatching.util.RandomShuffle;
 import pairmatching.view.InputView;
@@ -18,7 +20,18 @@ public class MatchingController {
                 return;
             }
         }
-        matchingService.matchPair(mission);
+        matchPair(mission);
+    }
+
+    private void matchPair(Mission mission) {
+        try {
+            matchingService.matchPair(mission);
+            List<Pair> matchResult = matchingService.getMatchResult(mission);
+            OutputView.printMatchResult(MatchResultDto.from(matchResult));
+        } catch (IllegalArgumentException e) {
+            OutputView.printErrorMessage(e.getMessage());
+        }
+
     }
 
     public Mission readMission() {
