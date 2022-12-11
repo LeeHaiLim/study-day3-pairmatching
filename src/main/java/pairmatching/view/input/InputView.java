@@ -2,6 +2,7 @@ package pairmatching.view.input;
 
 import camp.nextstep.edu.missionutils.Console;
 import pairmatching.constant.Function;
+import pairmatching.constant.Mission;
 
 public class InputView {
 
@@ -16,16 +17,16 @@ public class InputView {
         return null;
     }
 
-    public String readMission() {
+    public Mission readMission() {
         print(REQUEST_MISSION);
         print(MISSION_FORM_EXAMPLE);
         return null;
     }
 
-    public String readRetryMatching() {
+    public boolean readRetryMatching() {
         print(REQUEST_RETRY_MATCHING);
         print(RETRY_MATCHING_FORM_EXAMPLE);
-        return null;
+        return false;
     }
 
     private String read() {
