@@ -2,7 +2,7 @@ package pairmatching.view.input;
 
 import camp.nextstep.edu.missionutils.Console;
 import pairmatching.constant.Function;
-import pairmatching.constant.Mission;
+import pairmatching.dto.MissionDto;
 
 public class InputView {
 
@@ -17,7 +17,7 @@ public class InputView {
         return null;
     }
 
-    public Mission readMission() {
+    public MissionDto readMission() {
         print(REQUEST_MISSION);
         print(MISSION_FORM_EXAMPLE);
         return null;
