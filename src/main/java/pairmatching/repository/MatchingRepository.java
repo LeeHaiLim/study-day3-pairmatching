@@ -63,4 +63,8 @@ public class MatchingRepository {
         }
         return false;
     }
+
+    public void resetPairMatching() {
+        matchingResults.clear();
+    }
 }

@@ -33,6 +33,10 @@ public class MatchingController {
         }
     }
 
+    public void resetPairMatching() {
+        matchingService.resetPairMatching();
+    }
+
     private void matchPair(Mission mission) {
         try {
             matchingService.matchPair(mission);

@@ -76,4 +76,8 @@ public class MatchingService {
     public List<Pair> getMatchResult(Mission mission) {
         return matchingRepository.findByMission(mission);
     }
+
+    public void resetPairMatching(){
+        matchingRepository.resetPairMatching();
+    }
 }

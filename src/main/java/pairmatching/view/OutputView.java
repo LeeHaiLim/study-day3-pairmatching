@@ -12,4 +12,8 @@ public class OutputView {
     public static void printMatchResult(MatchResultDto matchResultDto) {
         matchResultDto.getMatchResult().stream().forEach(System.out::println);
     }
+
+    public static void printMessage(String message) {
+        System.out.println(message);
+    }
 }

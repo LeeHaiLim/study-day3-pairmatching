@@ -2,10 +2,7 @@ package pairmatching.controller;
 
 import pairmatching.domain.Course;
 import pairmatching.domain.Menu;
-import pairmatching.domain.Mission;
 import pairmatching.service.CrewSaveService;
-import pairmatching.service.MatchingInfoService;
-import pairmatching.service.MatchingService;
 import pairmatching.view.InputView;
 import pairmatching.view.OutputView;
 
@@ -13,8 +10,6 @@ import java.util.List;
 
 public class MainController {
     private CrewSaveService crewSaveService = new CrewSaveService();
-    private MatchingService matchingService = new MatchingService();
-    private MatchingInfoService matchingInfoService = new MatchingInfoService();
     private MatchingController matchingController = new MatchingController();
 
     public MainController() {
@@ -29,7 +24,7 @@ public class MainController {
         do {
             menu = readMenu();
             runService(menu);
-        } while(menu != Menu.QUIT);
+        } while (menu != Menu.QUIT);
     }
 
     private void runService(Menu menu) {
@@ -40,7 +35,8 @@ public class MainController {
             matchingController.runMatchingInfo();
         }
         if (menu == Menu.RESET) {
-            // 페어 초기화
+            matchingController.resetPairMatching();
+            OutputView.printMessage("초기화 되었습니다.");
         }
     }
 
