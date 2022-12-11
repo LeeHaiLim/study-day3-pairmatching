@@ -11,12 +11,12 @@ import pairmatching.view.OutputView;
 
 import java.util.List;
 
-public class MatchingController {
+public class MainController {
     private CrewSaveService crewSaveService = new CrewSaveService();
     private MatchingService matchingService = new MatchingService();
     private MatchingInfoService matchingInfoService = new MatchingInfoService();
 
-    public MatchingController() {
+    public MainController() {
         List<String> backendCrew = crewSaveService.getBackendCrew();
         List<String> frontendCrew = crewSaveService.getFrontendCrew();
         crewSaveService.saveCrewNames(backendCrew, Course.BACKEND);

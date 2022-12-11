@@ -1,10 +1,10 @@
 package pairmatching;
 
-import pairmatching.controller.MatchingController;
+import pairmatching.controller.MainController;
 
 public class Application {
     public static void main(String[] args) {
-        MatchingController matchingController = new MatchingController();
-        matchingController.run();
+        MainController mainController = new MainController();
+        mainController.run();
     }
 }
