@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import pairmatching.domain.Course;
 import pairmatching.domain.Crew;
 
@@ -17,5 +18,11 @@ public class CrewRepository {
 
     public static List<Crew> getCrewsByCourse(Course course) {
         return crews.get(course);
+    }
+
+    public static List<String> getCrewNamesByCourse(Course course) {
+        return getCrewsByCourse(course).stream()
+                .map(Crew::getName)
+                .collect(Collectors.toList());
     }
 }
