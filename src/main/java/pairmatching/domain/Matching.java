@@ -2,8 +2,10 @@ package pairmatching.domain;
 
 import pairmatching.constant.Course;
 import pairmatching.constant.Mission;
+import pairmatching.dto.MatchingDto;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Matching {
 
@@ -29,6 +31,13 @@ public class Matching {
             }
         }
         return false;
+    }
+
+    public MatchingDto getMatchingDto() {
+        List<List<String>> matchInfo = this.pairs.stream()
+                .map(Pair::getPairDto)
+                .collect(Collectors.toList());
+        return new MatchingDto(matchInfo);
     }
 
     public Course getCourse() {
