@@ -1,5 +1,7 @@
 package pairmatching.model;
 
+import pairmatching.Const;
+
 import java.io.*;
 import java.util.List;
 
@@ -7,12 +9,12 @@ public class CrewReader {
     private List<String> crewNames;
 
     public void readCrews(Course course) {
-        String filePath = "D:\\study\\study-day3-pairmatching\\src\\main\\resources\\";
+        String filePath = "";
         if (course.equals(Course.BACKEND)) {
-            filePath += "backend-crew.md";
+            filePath = Const.BACKEND_PATH;
         }
         if (course.equals(Course.FRONTEND)) {
-            filePath += "frontend-crew.md";
+            filePath = Const.FRONTEND_PATH;
         }
         File file = new File(filePath);
         try {
