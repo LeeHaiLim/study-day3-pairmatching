@@ -17,4 +17,12 @@ class FileReaderTest {
 
         Assertions.assertThat(strings.size()).isEqualTo(20);
     }
+
+    @DisplayName("프론트엔드 크루 파일 읽어오기 테스트")
+    @Test
+    void readFrontFileTest() {
+        List<String> strings = FileReader.readFrontCrew();
+
+        Assertions.assertThat(strings.size()).isEqualTo(15);
+    }
 }
