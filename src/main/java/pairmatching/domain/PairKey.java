@@ -29,7 +29,7 @@ public class PairKey {
             return false;
         }
         PairKey pairKey = (PairKey) o;
-        return course == pairKey.course && level == pairKey.level && mission == pairKey.mission;
+        return course.equals(pairKey.course) && level.equals(pairKey.level) && mission.equals(pairKey.mission);
     }
 
     @Override
