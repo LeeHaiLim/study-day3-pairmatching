@@ -10,6 +10,12 @@ public class InputView {
                 + "3. 페어 초기화\n"
                 + "Q. 종료");
 
-        return Console.readLine();
+        return Console.readLine().trim();
+    }
+
+    public String[] readPairKey() {
+        System.out.println("과정, 레벨, 미션을 선택하세요.");
+
+        return Console.readLine().trim().split(", ", -1);
     }
 }
