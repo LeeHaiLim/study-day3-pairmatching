@@ -6,25 +6,21 @@ import java.util.List;
 
 public class CrewManager {
 
-    List<String> backEndCrewNames;
-    List<Crew> shuffledBackEndCrews;
-    List<String> frontEndCrewNames;
-    List<Crew> shuffledFrontEndCrews;
+    List<String> CrewNames;
+    List<Crew> shuffledCrews;
 
-    public void readCrews() {
+    Course course;
+
+    public void readCrews(Course course) {
+        this.course = course;
         CrewReader crewReader = new CrewReader();
-        crewReader.readCrews(Course.BACKEND);
-        backEndCrewNames = crewReader.getCrews();
-        crewReader.readCrews(Course.FRONTEND);
-        frontEndCrewNames = crewReader.getCrews();
+        crewReader.readCrews(course);
+        CrewNames = crewReader.getCrews();
     }
 
     public void shuffledCrews() {
-        for (String name : Randoms.shuffle(backEndCrewNames)) {
-            shuffledBackEndCrews.add(new Crew(Course.BACKEND, name));
-        }
-        for (String name : Randoms.shuffle(frontEndCrewNames)) {
-            shuffledFrontEndCrews.add(new Crew(Course.FRONTEND, name));
+        for (String name : Randoms.shuffle(CrewNames)) {
+            shuffledCrews.add(new Crew(course, name));
         }
     }
 
@@ -66,11 +62,11 @@ public class CrewManager {
         return matchPair(crews);
     }
 
-    public List<Crew> getShuffledBackEndCrews() {
-        return shuffledBackEndCrews;
+    public void initPair() {
+
     }
 
-    public List<Crew> getShuffledFrontEndCrews() {
-        return shuffledFrontEndCrews;
+    public List<Crew> getShuffledCrews() {
+        return shuffledCrews;
     }
 }
