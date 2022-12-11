@@ -19,6 +19,15 @@ public class Pair {
         }
     }
 
+    public boolean isPairOverlapped(List<Pair> pairs) {
+        for (Pair comparedPair : pairs) {
+            if (isPairOverlapped(comparedPair)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public boolean isPairOverlapped(Pair pair) {
         List<Crew> comparedCrews = pair.getCrews();
         return comparedCrews.stream()

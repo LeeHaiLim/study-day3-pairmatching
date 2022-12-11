@@ -63,4 +63,4 @@
 
 - Matching : 매칭 정보를 가지고 있음
   - [x] 같은 코스, 과정인지 확인하는 기능 #isSameMatching
-  - [ ] 곂쳐있는 페어가 있는지 확인하는 기능 #isExistOverlappedPair
+  - [x] 곂쳐있는 페어가 있는지 확인하는 기능 #isExistOverlappedPair
