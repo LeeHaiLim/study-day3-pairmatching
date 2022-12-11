@@ -22,6 +22,10 @@ public class PairRepository {
         return pairs.get(pairKey);
     }
 
+    public static List<List<String>> getPairsToString(PairKey pairKey) {
+        return getPairs(pairKey).stream().map(Pair::getCrewNames).collect(Collectors.toList());
+    }
+
     public static void removePairs(PairKey pairKey) {
         pairs.remove(pairKey);
     }
