@@ -14,7 +14,7 @@ public class MissionService {
 
     private final MissionRepository missionRepository;
 
-    public MissionService(MemoryMissionRepository missionRepository) {
+    public MissionService(MissionRepository missionRepository) {
         this.missionRepository = missionRepository;
     }
 
