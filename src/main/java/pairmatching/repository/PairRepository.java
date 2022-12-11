@@ -9,7 +9,7 @@ import pairmatching.domain.Pair;
 import pairmatching.domain.PairKey;
 
 public class PairRepository {
-    private static HashMap<PairKey, List<Pair>> pairs = new HashMap<>();
+    private static final HashMap<PairKey, List<Pair>> pairs = new HashMap<>();
 
     public static void addPairs(PairKey pairKey, List<Pair> pairList) {
         pairs.put(pairKey, pairList);
