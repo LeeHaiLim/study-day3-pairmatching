@@ -15,7 +15,9 @@ public class InputView {
     }
 
     public static List<String> readMission() {
-        InputMessage.MissionInfoMessage();
+        System.out.println("과정, 레벨, 미션을 선택하세요.\n" +
+                "ex) 백엔드, 레벨1, 자동차경주\n" +
+                "프론트엔드, 레벨1, 자동차경주");
         String input = Console.readLine();
         return Arrays.stream(input.split(MISSION_INPUT_DELIMITER))
                 .map(s -> s.replaceAll(" ", ""))

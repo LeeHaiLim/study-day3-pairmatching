@@ -5,7 +5,7 @@ import pairmatching.domain.Mission;
 import pairmatching.domain.Pair;
 import pairmatching.dto.MatchResultDto;
 import pairmatching.service.MatchingService;
-import pairmatching.util.RandomShuffle;
+import pairmatching.view.InputMessage;
 import pairmatching.view.InputView;
 import pairmatching.view.OutputView;
 
@@ -13,17 +13,31 @@ import java.util.List;
 
 public class MatchingController {
     private MatchingService matchingService = new MatchingService();
+
     public void run() {
-        Mission mission = readMission();
-        if (matchingService.hasPair(mission)) {
-            if (readCommend()==Command.NO) {
-                return;
+        InputMessage.MissionInfoMessage();
+        boolean isContinue = true;
+        while(isContinue) {
+            Mission mission = readMission();
+            if (matchingService.hasPair(mission)) {
+                isContinue = retryMatching();
+            }
+            if (isContinue) {
+                matchPair(mission);
+                isContinue = false;
             }
         }
-        matchPair(mission);
+    }
+
+    public boolean retryMatching() {
+        if (readCommend() == Command.NO) {
+            return false;
+        }
+        return true;
     }
 
     public void runMatchingInfo() {
+        InputMessage.MissionInfoMessage();
         Mission mission = readMission();
         try {
             List<Pair> matchResult = matchingService.getMatchResult(mission);

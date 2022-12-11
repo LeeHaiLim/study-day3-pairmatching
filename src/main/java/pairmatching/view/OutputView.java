@@ -10,6 +10,7 @@ public class OutputView {
     }
 
     public static void printMatchResult(MatchResultDto matchResultDto) {
+        System.out.println("페어 매칭 결과입니다.");
         matchResultDto.getMatchResult().stream().forEach(System.out::println);
     }
 
