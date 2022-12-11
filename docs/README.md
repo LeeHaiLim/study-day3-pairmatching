@@ -51,7 +51,10 @@
 
 ## 메인 기능 enum Name : MainFunction
 - MATCHING, SEARCHING, INIT, QUIT
+- 입력값으로부터 변환하기 - #from()
 ## 미션 레벨 enum Name : Level
 - ONE,TWO,THREE,FOUR,FIVE
+- 입력값으로부터 변환하기 - #from()
 ## 파트 enum : Part
 - FRONT_END , BACK_END
+- 입력값으로부터 변환하기 - #from()
