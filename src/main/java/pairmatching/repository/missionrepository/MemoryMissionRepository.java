@@ -34,7 +34,15 @@ public class MemoryMissionRepository implements MissionRepository {
                 .findAny();
     }
 
+    @Override
     public List<Mission> findAllMissions() {
         return new ArrayList<>(missions.keySet());
+    }
+
+    @Override
+    public void init(List<Mission> missions) {
+        for (Mission mission : missions) {
+            this.missions.put(mission, false);
+        }
     }
 }
