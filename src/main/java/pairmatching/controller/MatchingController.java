@@ -2,6 +2,7 @@ package pairmatching.controller;
 
 import pairmatching.domain.Course;
 import pairmatching.domain.Menu;
+import pairmatching.domain.Mission;
 import pairmatching.service.CrewSaveService;
 import pairmatching.service.MatchingInfoService;
 import pairmatching.service.MatchingService;
@@ -48,6 +49,16 @@ public class MatchingController {
         } catch (IllegalArgumentException e) {
             OutputView.printErrorMessage(e.getMessage());
             return readMenu();
+        }
+    }
+
+    public Mission readMission() {
+        try {
+            List<String> missions = InputView.readMission();
+            return Mission.of(missions.get(0), missions.get(1), missions.get(2));
+        } catch (IllegalArgumentException e) {
+            OutputView.printErrorMessage(e.getMessage());
+            return readMission();
         }
     }
 }
