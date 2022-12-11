@@ -26,7 +26,7 @@
     - 네, 아니오 가 아닌 경우 에러를 발생함
   
 - OutputView : 출력 담당
-  - [ ] 현재 가지고 있는 과정을 보여주는 기능 #printFunctions()
+  - [x] 현재 가지고 있는 과정, 미션을 보여주는 기능 #printMissions()
   - [ ] 페어 매칭 결과를 보여주는 기능 #printMatchingResult()
 
 - CrewReader : md 파일에 있는 Crew 정보를 읽어오는 기능
