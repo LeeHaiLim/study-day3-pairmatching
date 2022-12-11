@@ -1,10 +1,10 @@
-package pairmatching;
+package pairmatching.model;
 
 import java.io.*;
 import java.util.List;
 
 public class CrewReader {
-    List<Crew> crews;
+    private List<String> crewNames;
 
     public void readCrews(Course course) {
         String filePath = "D:\\study\\study-day3-pairmatching\\src\\main\\resources\\";
@@ -19,7 +19,7 @@ public class CrewReader {
             BufferedReader reader = new BufferedReader(new FileReader(file));
             String name;
             while((name = reader.readLine())!= null) {
-                crews.add(new Crew(course, name));
+                crewNames.add(name);
             }
             reader.close();
         } catch (FileNotFoundException e) {
@@ -29,7 +29,7 @@ public class CrewReader {
         }
     }
 
-    public List<Crew> getCrews() {
-        return crews;
+    public List<String> getCrews() {
+        return crewNames;
     }
 }
