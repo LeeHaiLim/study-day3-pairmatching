@@ -5,7 +5,7 @@ import pairmatching.domain.Pair;
 
 public class OutputView {
     public void printMenu() {
-        System.out.println("#############################################\n"
+        System.out.println("\n#############################################\n"
                 + "과정: 백엔드 | 프론트엔드\n"
                 + "미션:\n"
                 + "  - 레벨1: 자동차경주 | 로또 | 숫자야구게임\n"
@@ -17,17 +17,17 @@ public class OutputView {
     }
 
     public void printPairs(List<Pair> pairs) {
-        System.out.println("페어 매칭 결과입니다.");
+        System.out.println("\n페어 매칭 결과입니다.");
         for (Pair pair : pairs) {
             System.out.println(String.join(" : ", pair.getCrewNames()));
         }
     }
 
     public void printPairInitResult () {
-        System.out.println("초기화 되었습니다.");
+        System.out.println("\n초기화 되었습니다.");
     }
 
     public void printErrorMessage(String message) {
-        System.out.println("[ERROR] " + message);
+        System.out.println("\n[ERROR] " + message);
     }
 }
