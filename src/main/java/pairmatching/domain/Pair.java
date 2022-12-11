@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Pair {
-    List<String> crewNames;
+    private final List<String> crewNames;
 
     public Pair(List<String> crews) {
         this.crewNames = crews;

@@ -9,7 +9,7 @@ public enum Level {
     LEVEL4("레벨4"),
     LEVEL5("레벨5");
 
-    private String name;
+    private final String name;
 
     public static Level findLevel(String name) {
         return Arrays.stream(Level.values())

@@ -3,15 +3,9 @@ package pairmatching.domain;
 import java.util.Objects;
 
 public class PairKey {
-    private Course course;
-    private Level level;
-    private Mission mission;
-
-    public PairKey(Course course, Level level, Mission mission) {
-        this.course = course;
-        this.level = level;
-        this.mission = mission;
-    }
+    private final Course course;
+    private final Level level;
+    private final Mission mission;
 
     public PairKey(String[] keys) {
         validate(keys);
