@@ -1,4 +1,4 @@
-package pairmatching;
+package pairmatching.util;
 
 import static pairmatching.domain.Course.FRONTEND;
 import static pairmatching.domain.Course.BACKEND;
