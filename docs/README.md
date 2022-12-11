@@ -1,9 +1,9 @@
 # 기능목록
 
 ## 입력을 담당하는 클래스 ClassName : InputView
-- [ ] 메인 기능 입력받기
-- [ ] 과정, 레벨, 미션 입력받기
-- [ ] 재매칭 여부 입력받기
+- [ ] 메인 기능 입력받기 - #insertMainFunctionInput()
+- [ ] 과정, 레벨, 미션 입력받기 - #insertDetails()
+- [ ] 재매칭 여부 입력받기 - #insertReMatchingOrNot()
 ---
 ## 출력을 담당하는 클래스 ClassName : OutputView
 - [ ] 매칭 결과 출력 - #printMatcingResult()
@@ -15,6 +15,7 @@
 ## 페어를 매칭한다 domain : Pair
 - 멤버 : List<List<String>> names, Part part, Mission
 - ### Controller : PairMatchingController
+  - [ ] 메인기능 실행 - #run()
 - ### Service : PairMatchingService
   - [ ] 페어 매칭 기능 - #createPairs()
   - [ ] 페어 조회 기능 - #findPair()
@@ -37,17 +38,17 @@
   - [ ] 미션의 레벨로 매칭된 미션들 조회 - #findAllByLevel()
   - [ ] 미션의 이름으로 매칭된 미션 조회 - #findByName()
 ---
-## 프론트엔드 크루들의 이름을 저장하는 일급컬렉션 ClassName : FrontMembers
+## 프론트엔드 크루들의 이름을 저장하는 일급컬렉션 ClassName : FrontMember
 - [ ] 프론트엔드 크루원들의 이름 받아오기 - getFrontNames()
 ---
-## 백엔드 크루들의 이름을 저장하는 일급컬렉션 ClassName : BackMembers
+## 백엔드 크루들의 이름을 저장하는 일급컬렉션 ClassName : BackMember
 - [ ] 백엔드 크루원들의 이름 받아오기 - getBackNames()
 ---
 ## 파일을 읽어들이는 클래스 ClassName : FileReader
 - [ ] `backend-crew.md` 를 읽어들이는 기능 - #readBackCrew()
 - [ ] `frontend-crew.md` 를 읽어들이는 기능 - #readFrontCrew()
 
-## 메인 기능 enum Name : Main
+## 메인 기능 enum Name : MainFunction
 - MATCHING, SEARCHING, INIT, QUIT
 ## 미션 레벨 enum Name : Level
 - ONE,TWO,THREE,FOUR,FIVE
