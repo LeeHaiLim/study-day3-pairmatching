@@ -26,7 +26,7 @@ class MissionServiceTest {
     }
 
     @Test
-    void createMissionPairMatching() {
+    void createMissionPairMatchingTest() {
         missionService.createMissionPairMatching(Part.FRONT_END, "자동차경주");
 
         Mission racing = missionRepository.findByName("자동차경주", Part.FRONT_END).get();
@@ -35,7 +35,9 @@ class MissionServiceTest {
     }
 
     @Test
-    void deleteAll() {
+    void deleteAllTest() {
+        missionService.deleteAll();
+        Assertions.assertThat(missionRepository.findAllMissions().size()).isEqualTo(0);
     }
 
     @Test
