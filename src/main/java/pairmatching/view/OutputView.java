@@ -1,7 +1,6 @@
 package pairmatching.view;
 
 import java.util.List;
-import pairmatching.domain.Pair;
 
 public class OutputView {
     public void printMenu() {
@@ -16,11 +15,9 @@ public class OutputView {
                 + "############################################");
     }
 
-    public void printPairs(List<Pair> pairs) {
+    public void printPairs(List<List<String>> pairs) {
         System.out.println("\n페어 매칭 결과입니다.");
-        for (Pair pair : pairs) {
-            System.out.println(String.join(" : ", pair.getCrewNames()));
-        }
+        pairs.forEach(pair -> System.out.println(String.join(" : ", pair)));
     }
 
     public void printPairInitResult () {
