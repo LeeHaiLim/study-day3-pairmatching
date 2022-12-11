@@ -11,6 +11,11 @@ public class PairMatchingController {
     private View view;
     private PairMatcher pairMatcher;
 
+    public PairMatchingController() {
+        this.view = new View();
+        this.pairMatcher = new PairMatcher();
+    }
+
     public void run() {
         String cmd;
         do {
@@ -34,7 +39,8 @@ public class PairMatchingController {
     private void matchPair() {
         List<Pair> pairs = null;
         String[] splitedInput = view.selectMenu().split(", ");
-        pairMatcher = new PairMatcher(Course.getCourse(splitedInput[0]), Level.getLevel(splitedInput[1]));
+        System.out.println(splitedInput[0]);
+        pairMatcher.setInfo(Course.getCourse(splitedInput[0]), Level.getLevel(splitedInput[1]));
         pairMatcher.readCrews();
         if(pairMatcher.isExist()) {
             pairs = askRematch();
@@ -57,6 +63,7 @@ public class PairMatchingController {
     }
 
     private void initPair() {
+        view.initMatching();
         pairMatcher.initPair();
     }
 }

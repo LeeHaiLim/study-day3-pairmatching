@@ -3,10 +3,11 @@ package pairmatching.model;
 import pairmatching.Const;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CrewReader {
-    private List<String> crewNames;
+    private List<String> crewNames = new ArrayList<>();
 
     public void readCrews(Course course) {
         String filePath = "";

@@ -3,22 +3,23 @@ package pairmatching;
 import camp.nextstep.edu.missionutils.Randoms;
 import pairmatching.model.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PairMatcher {
 
-    List<String> CrewNames;
-    List<Crew> shuffledCrews;
-    List<Pair> pairs;
+    List<String> CrewNames = new ArrayList<>();
+    List<Crew> shuffledCrews = new ArrayList<>();
+    List<Pair> pairs = new ArrayList<>();
 
     Course course;
     Level level;
 
-    public PairMatcher(Course course, Level level) {
+    public void setInfo(Course course, Level level) {
         validateInfo(course, level);
         this.course = course;
-        this.level = level;
-    }
+        this.level = level;}
+
 
     private void validateInfo(Course course, Level level) {
         if(course == null) {
@@ -36,13 +37,14 @@ public class PairMatcher {
     }
 
     public void shuffledCrews() {
+        shuffledCrews.clear();
         for (String name : Randoms.shuffle(CrewNames)) {
             shuffledCrews.add(new Crew(course, name));
         }
     }
 
     public List<Pair> matchPair() {
-        for (int i = 0; i < shuffledCrews.size(); i += 2) {
+        for (int i = 0; i < shuffledCrews.size() - 1; i += 2) {
             pairs.add(new Pair(shuffledCrews.get(i), shuffledCrews.get(i + 1)));
             if (canNotBeDiveded(shuffledCrews, pairs, i)) break;
         }
@@ -51,7 +53,7 @@ public class PairMatcher {
 
     private boolean canNotBeDiveded(List<Crew> crews, List<Pair> pairs, int i) {
         if (!isDivided(crews)) {
-            if (i == crews.size() - 1) {
+            if (i == crews.size() - 3) {
                 pairs.add(new Pair(crews.get(i), crews.get(i + 1), crews.get(i + 2)));
                 return true;
             }
@@ -74,6 +76,7 @@ public class PairMatcher {
     }
 
     public List<Pair> match() {
+        pairs.clear();
         shuffledCrews();
         return matchPair();
     }
@@ -84,7 +87,7 @@ public class PairMatcher {
     }
 
     public boolean isExist() {
-        if(pairs.size() != 0) {
+        if(!pairs.isEmpty()) {
             return true;
         }
         return false;
@@ -92,5 +95,21 @@ public class PairMatcher {
 
     public List<Pair> getPairs() {
         return pairs;
+    }
+
+    public List<String> getCrewNames() {
+        return CrewNames;
+    }
+
+    public List<Crew> getShuffledCrews() {
+        return shuffledCrews;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public Level getLevel() {
+        return level;
     }
 }

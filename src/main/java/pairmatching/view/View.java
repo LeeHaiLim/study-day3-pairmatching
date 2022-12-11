@@ -57,4 +57,8 @@ public class View {
         return Console.readLine();
     }
 
+    public void initMatching() {
+        System.out.println(INIT);
+    }
+
 }
