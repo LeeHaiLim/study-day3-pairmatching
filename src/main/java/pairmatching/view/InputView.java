@@ -18,6 +18,7 @@ public class InputView {
         InputMessage.MissionInfoMessage();
         String input = Console.readLine();
         return Arrays.stream(input.split(MISSION_INPUT_DELIMITER))
+                .map(s -> s.replaceAll(" ", ""))
                 .collect(Collectors.toList());
     }
 
