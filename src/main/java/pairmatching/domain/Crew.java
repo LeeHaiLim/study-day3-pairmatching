@@ -16,4 +16,22 @@ public class Crew {
         return name;
     }
 
+    public Course getCourse() {
+        return course;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (object == this) {
+            return true;
+        }
+        if (!(object instanceof Crew)) {
+            return false;
+        }
+        if (((Crew) object).getName().equals(name)
+                && ((Crew) object).getCourse().equals(course)) {
+            return true;
+        }
+        return false;
+    }
 }

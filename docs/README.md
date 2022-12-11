@@ -48,7 +48,7 @@
   - [ ] Crew들을 입력 받아 매칭을 해줌
 
 - Crew : 회원의 정보를 가지고 있음
-  - [ ] equals()
+  - [x] equals()
   - [x] getName()
 
 - Matching : 매칭 정보를 가지고 있음
