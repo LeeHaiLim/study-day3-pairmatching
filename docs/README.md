@@ -48,7 +48,7 @@
   - [x] 동일한 레벨인지 확인 #isEqualLevel
 
 - CrewSuffler : Crew를 섞어주는 역할
-  - [ ] Crew들을 입력 받아 섞음
+  - [x] Crew들을 입력 받아 섞음
 
 - CrewMatcher : Crew를 매칭해주는 역할
   - [ ] Crew들을 입력 받아 매칭을 해줌
