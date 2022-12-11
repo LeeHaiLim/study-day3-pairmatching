@@ -6,13 +6,14 @@ import pairmatching.domain.MainFunction;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Supplier;
 
 public class InputView {
     private static final String RETRY_INPUT = "네";
     private static final String NOT_RETRY_INPUT = "아니";
 
     public static MainFunction insertMainFunctionInput() {
-        return MainFunction.from(Console.readLine());
+        return repeat(() -> MainFunction.from(Console.readLine()));
     }
 
     public static List<String> insertDetails() {
@@ -30,5 +31,15 @@ public class InputView {
             throw new IllegalArgumentException("[ERROR]");
         }
         return reMatchingInput.equals(RETRY_INPUT);
+    }
+
+    public static <T> T repeat(Supplier<T> supplier) {
+        while(true){
+            try {
+                return supplier.get();
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 }
