@@ -3,8 +3,6 @@ package pairmatching.util;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import pairmatching.domain.Crew;
 import pairmatching.domain.Pair;
 import pairmatching.domain.PairKey;
 import pairmatching.repository.CrewRepository;
@@ -36,7 +34,6 @@ public class PairMatcher {
     private static List<Pair> makePairs(List<String> crewNames) {
         List<String> shuffledCrewNames = Randoms.shuffle(crewNames);
         List<Pair> pairs = new ArrayList<>();
-
         for (int i = 0; i < shuffledCrewNames.size() - 1; i += 2) {
             int toIndex = i + 2;
             if (i + 2 == shuffledCrewNames.size() - 1) {
@@ -44,7 +41,6 @@ public class PairMatcher {
             }
             pairs.add(new Pair(shuffledCrewNames.subList(i, toIndex)));
         }
-
         return pairs;
     }
 }

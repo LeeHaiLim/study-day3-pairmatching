@@ -21,7 +21,6 @@ public class InputView {
 
     public String[] readPairKey() {
         System.out.println("\n과정, 레벨, 미션을 선택하세요.");
-
         return Console.readLine().trim().split(", ", -1);
     }
 }

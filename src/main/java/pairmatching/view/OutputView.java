@@ -20,7 +20,7 @@ public class OutputView {
         pairs.forEach(pair -> System.out.println(String.join(" : ", pair)));
     }
 
-    public void printPairInitResult () {
+    public void printPairInitResult() {
         System.out.println("\n초기화 되었습니다.");
     }
 
