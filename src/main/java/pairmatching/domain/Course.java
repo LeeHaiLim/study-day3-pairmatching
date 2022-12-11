@@ -6,7 +6,7 @@ public enum Course {
     BACKEND("백엔드"),
     FRONTEND("프론트엔드");
 
-    private String name;
+    private final String name;
 
     public static Course findCourse(String name) {
         return Arrays.stream(Course.values())
