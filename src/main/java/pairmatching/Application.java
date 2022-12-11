@@ -71,7 +71,7 @@ public class Application {
         outputView.printMenu();
         PairKey pairKey = repeatWhile(() -> new PairKey(inputView.readPairKey()));
         try {
-            outputView.printPairs(PairRepository.getPairs(pairKey));
+            outputView.printPairs(PairRepository.getPairsToString(pairKey));
         } catch (IllegalArgumentException e) {
             outputView.printErrorMessage(e.getMessage());
         }
