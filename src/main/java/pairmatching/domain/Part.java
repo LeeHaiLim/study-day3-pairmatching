@@ -12,7 +12,7 @@ public enum Part {
         this.partName = partName;
     }
 
-    public static Part part(String partInput) {
+    public static Part from(String partInput) {
         return Arrays.stream(Part.values())
                 .filter(part -> part.partName.equals(partInput))
                 .findAny()
