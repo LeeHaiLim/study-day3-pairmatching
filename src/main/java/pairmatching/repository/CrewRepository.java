@@ -3,6 +3,7 @@ package pairmatching.repository;
 import pairmatching.domain.Crew;
 import pairmatching.helper.CrewReader;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class CrewRepository {
@@ -14,8 +15,16 @@ public class CrewRepository {
         initializeRepository();
     }
 
-    private final void initializeRepository() {
+    private void initializeRepository() {
         backendCrews.addAll(CrewReader.readBackendCrews());
         frontendCrews.addAll(CrewReader.readFrontendCrews());
+    }
+
+    private List<Crew> getBackendCrews() {
+        return Collections.unmodifiableList(backendCrews);
+    }
+
+    private List<Crew> getFrontendCrews() {
+        return Collections.unmodifiableList(frontendCrews);
     }
 }
