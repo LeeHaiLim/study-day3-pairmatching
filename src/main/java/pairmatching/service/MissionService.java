@@ -27,7 +27,7 @@ public class MissionService {
     }
 
     public void deleteAll() {
-
+        missionRepository.deleteAll();
     }
 
     public List<Mission> getMissionsByLevel() {
