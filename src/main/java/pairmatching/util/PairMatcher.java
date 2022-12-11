@@ -12,25 +12,25 @@ import pairmatching.repository.PairRepository;
 
 public class PairMatcher {
     public static void pairMatch(PairKey pairKey) {
-        List<Pair> existedPair = PairRepository.getPairsByCourseAndLevel(pairKey.getCourse(), pairKey.getLevel());
-        List<String> crewNames = CrewRepository.getCrewsByCourse(pairKey.getCourse()).stream()
-                .map(Crew::getName)
-                .collect(Collectors.toList());
+        List<String> crewNames = CrewRepository.getCrewNamesByCourse(pairKey.getCourse());
         if (crewNames.size() < 2) {
             throw new IllegalArgumentException("페어를 만들 수 없습니다.");
         }
-        int trial = 0;
-        while (true) {
+        if (!tryPairMatch(pairKey, crewNames)) {
+            throw new IllegalArgumentException("3번 이상 매칭에 실패하였습니다.");
+        }
+    }
+
+    private static boolean tryPairMatch(PairKey pairKey, List<String> crewNames) {
+        List<Pair> existedPair = PairRepository.getPairsByCourseAndLevel(pairKey.getCourse(), pairKey.getLevel());
+        for (int i = 0; i < 3; i++) {
             List<Pair> temp = makePairs(crewNames);
             if (temp.stream().noneMatch(existedPair::contains)) {
                 PairRepository.addPairs(pairKey, temp);
-                break;
-            }
-            trial++;
-            if (trial == 3) {
-                throw new IllegalArgumentException("3번 이상 매칭에 실패했습니다.");
+                return true;
             }
         }
+        return false;
     }
 
     private static List<Pair> makePairs(List<String> crewNames) {

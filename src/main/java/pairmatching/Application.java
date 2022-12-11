@@ -19,17 +19,16 @@ public class Application {
 
     public void run() {
         Initiator.init();
-        FeatureMenu featureMenu;
-        do {
-            featureMenu = repeatWhile(() -> FeatureMenu.findMenu(inputView.readFeature()));
+        while (true) {
+            FeatureMenu featureMenu = repeatWhile(() -> FeatureMenu.findMenu(inputView.readFeature()));
+            if (featureMenu.equals(FeatureMenu.QUIT)) {
+                break;
+            }
             runMenu(featureMenu);
-        } while (!featureMenu.equals(FeatureMenu.QUIT));
+        }
     }
 
     public void runMenu(FeatureMenu featureMenu) {
-        if (featureMenu.equals(FeatureMenu.QUIT)) {
-            return;
-        }
         if (featureMenu.equals(FeatureMenu.PAIR_MATCHING)) {
             pairMatching();
         }
@@ -43,6 +42,16 @@ public class Application {
 
     public void pairMatching() {
         outputView.printMenu();
+        PairKey pairKey = getMatchingPairKey();
+        try {
+            PairMatcher.pairMatch(pairKey);
+            outputView.printPairs(PairRepository.getPairsToString(pairKey));
+        } catch (IllegalArgumentException e) {
+            outputView.printErrorMessage(e.getMessage());
+        }
+    }
+
+    public PairKey getMatchingPairKey() {
         PairKey pairKey = repeatWhile(() -> new PairKey(inputView.readPairKey()));
         while (PairRepository.containsKey(pairKey)) {
             Command command = repeatWhile(() -> Command.findCommand(inputView.readCommand()));
@@ -52,13 +61,9 @@ public class Application {
             }
             PairRepository.removePairs(pairKey);
         }
-        try {
-            PairMatcher.pairMatch(pairKey);
-            outputView.printPairs(PairRepository.getPairs(pairKey));
-        } catch (IllegalArgumentException e) {
-            outputView.printErrorMessage(e.getMessage());
-        }
+        return pairKey;
     }
+
 
     public void pairQuery() {
         outputView.printMenu();
