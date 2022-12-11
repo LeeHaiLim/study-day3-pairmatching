@@ -12,13 +12,15 @@ public class OutputView {
             "  - 레벨4: 성능개선 | 배포\n" +
             "  - 레벨5: \n" +
             "############################################";
+    private static final String INITIALIZING_FINISH =
+            "\n초기화 되었습니다. ";
 
     public void printMissions() {
         print(INTRODUCING_FUNCTION);
     }
 
     public void printFinishedInitializing() {
-        
+        print(INITIALIZING_FINISH);
     }
 
     public void printMatchingResult() {
