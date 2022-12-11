@@ -22,4 +22,12 @@ public class OutputView {
             System.out.println(String.join(" : ", pair.getCrewNames()));
         }
     }
+
+    public void printPairInitResult () {
+        System.out.println("초기화 되었습니다.");
+    }
+
+    public void printErrorMessage(String message) {
+        System.out.println("[ERROR] " + message);
+    }
 }
