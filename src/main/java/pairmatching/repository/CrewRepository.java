@@ -8,7 +8,7 @@ import pairmatching.domain.Course;
 import pairmatching.domain.Crew;
 
 public class CrewRepository {
-    private static Map<Course, List<Crew>> crews = new EnumMap<>(Course.class);
+    private static final Map<Course, List<Crew>> crews = new EnumMap<>(Course.class);
 
     public static void addCrew(Course course, String crewName) {
         crews.putIfAbsent(course, new ArrayList<>());
