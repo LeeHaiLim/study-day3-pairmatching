@@ -46,7 +46,8 @@
 ---
 ## 파일을 읽어들이는 클래스 ClassName : FileReader
 - [x] `backend-crew.md` 를 읽어들이는 기능 - #readBackCrew()
-- [ ] `frontend-crew.md` 를 읽어들이는 기능 - #readFrontCrew()
+- [x] `frontend-crew.md` 를 읽어들이는 기능 - #readFrontCrew()
+- [x] 파일 읽어오는 통합 로직 - #readFile()
 
 ## 메인 기능 enum Name : MainFunction
 - MATCHING, SEARCHING, INIT, QUIT
