@@ -45,7 +45,7 @@
 - [ ] 백엔드 크루원들의 이름 받아오기 - getBackNames()
 ---
 ## 파일을 읽어들이는 클래스 ClassName : FileReader
-- [ ] `backend-crew.md` 를 읽어들이는 기능 - #readBackCrew()
+- [x] `backend-crew.md` 를 읽어들이는 기능 - #readBackCrew()
 - [ ] `frontend-crew.md` 를 읽어들이는 기능 - #readFrontCrew()
 
 ## 메인 기능 enum Name : MainFunction
