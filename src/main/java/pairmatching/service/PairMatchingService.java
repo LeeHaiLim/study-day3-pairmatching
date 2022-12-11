@@ -30,11 +30,13 @@ public class PairMatchingService {
         List<List<String>> pairs = getPairs(part);
 
         Pair pair = new Pair(pairs, part, mission);
-        //중복 검증과정 필요
+        if (duplicated(mission.getLevel(), part, pairs)) {
+            return pair;
+        }
         return pairMatchingRepository.save(pair);
     }
 
-    public Pair findPair(Part part,String missionName) {
+    public Pair findPair(Part part, String missionName) {
         Mission mission = missionRepository.findByName(missionName, part)
                 .orElseThrow(() -> new IllegalArgumentException("[ERROR]"));
 
@@ -51,5 +53,19 @@ public class PairMatchingService {
             return frontMember.getPair();
         }
         return backMember.getPair();
+    }
+
+    private boolean duplicated(Level level, Part part, List<List<String>> pairs) {
+        List<Mission> allMatchedByLevel = missionRepository.findAllMatchedByLevel(level, part);
+        for (Mission mission : allMatchedByLevel) {
+            Pair pair = findPair(part, mission.getName());
+            List<List<String>> names = pair.getNames();
+            Optional<List<String>> any = pairs.stream().filter(names::contains)
+                    .findAny();
+            if (any.isPresent()) {
+                return true;
+            }
+        }
+        return false;
     }
 }
