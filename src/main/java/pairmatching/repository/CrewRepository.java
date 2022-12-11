@@ -7,15 +7,15 @@ import java.util.List;
 
 public class CrewRepository {
 
-    private final List<Crew> backendCrew = new ArrayList<>();
-    private final List<Crew> frontendCrew = new ArrayList<>();
+    private final List<Crew> backendCrews = new ArrayList<>();
+    private final List<Crew> frontendCrews = new ArrayList<>();
 
     CrewRepository() {
         initializeRepository();
     }
 
     private final void initializeRepository() {
-        backendCrew.addAll(CrewReader.readBackendCrews());
-        frontendCrew.addAll(CrewReader.readFrontendCrews());
+        backendCrews.addAll(CrewReader.readBackendCrews());
+        frontendCrews.addAll(CrewReader.readFrontendCrews());
     }
 }
