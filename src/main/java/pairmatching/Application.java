@@ -1,6 +1,8 @@
 package pairmatching;
 
 import pairmatching.constant.Function;
+import pairmatching.dto.MatchingDto;
+import pairmatching.dto.MissionDto;
 import pairmatching.service.MatchingService;
 import pairmatching.view.input.InputView;
 import pairmatching.view.output.OutputView;
@@ -40,7 +42,15 @@ public class Application {
     }
 
     private void doMatching() {
+        outputView.printMissions();
+        MissionDto missionDto = inputView.readMission();
+        if (service.isAlreadyMatched(missionDto.getCourse(), missionDto.getMission())) {
+            return;
+        }
 
+        service.match(missionDto.getCourse(), missionDto.getMission());
+        MatchingDto matchingDto = service.getMatchingDto(missionDto.getCourse(), missionDto.getMission());
+        outputView.printMatchingResult(matchingDto);
     }
 
     private void inquiryMatching() {
