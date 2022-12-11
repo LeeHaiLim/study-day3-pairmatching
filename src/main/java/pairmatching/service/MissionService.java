@@ -34,8 +34,9 @@ public class MissionService {
         return missionRepository.findAllMatchedByLevel(level, part);
     }
 
-    public Optional<Mission> getByName() {
-        return Optional.empty();
+    public Mission getByName(Part part, String missionName) {
+        return missionRepository.findByName(missionName, part)
+                .orElseThrow(() -> new IllegalArgumentException("[ERROR"));
     }
 
     public void init() {

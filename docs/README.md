@@ -30,8 +30,8 @@
 - ### Service : MissionService
   - [x] 미션 매칭 - #createMission()
   - [x] 매칭된 미션 전체 삭제 - #deleteAll()
-  - [x] 미션의 레벨로 매칭된 미션들 조회 - #getMissionsByLevel()
-  - [ ] 미션의 이름으로 매칭된 미션 조회 - #getByName()
+  - [x] 미션의 레벨로 미션들 조회 - #getMissionsByLevel()
+  - [x] 미션의 이름으로 매칭된 미션 조회 - #getByName()
 - ### Repository : MissionRepository
   - [x] 미션 저장 - #save()
   - [x] 매칭된 미션 전체 삭제 - #deleteAll()
