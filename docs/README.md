@@ -18,10 +18,10 @@
   - [ ] 메인기능 실행 - #run()
 - ### Service : PairMatchingService
   - [x] 페어 매칭 기능 - #createPairs()
-  - [ ] 페어 조회 기능 - #findPair()
+  - [x] 페어 조회 기능 - #findPair()
   - [ ] 페어 초기화 기능 - #initPair()
 - ### Repository : PairMatchingRepository
-  - [ ] 미션으로 매칭된 페어들 조회 - #getPairByMission()
+  - [x] 미션으로 매칭된 페어들 조회 - #getPairByMission()
   - [x] 생성된 페어들 저장 - #save()
   - [ ] 페어 전체 삭제 - #deleteAll()
 ---

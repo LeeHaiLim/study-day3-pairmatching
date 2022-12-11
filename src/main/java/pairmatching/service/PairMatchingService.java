@@ -34,8 +34,12 @@ public class PairMatchingService {
         return pairMatchingRepository.save(pair);
     }
 
-    public Pair findPair() {
-        return null;
+    public Pair findPair(Part part,String missionName) {
+        Mission mission = missionRepository.findByName(missionName, part)
+                .orElseThrow(() -> new IllegalArgumentException("[ERROR]"));
+
+        return pairMatchingRepository.findPairByMission(mission)
+                .orElseThrow(() -> new IllegalArgumentException("[ERROR]"));
     }
 
     public void initPair() {

@@ -12,4 +12,16 @@ public class Pair {
         this.part = part;
         this.mission = mission;
     }
+
+    public List<List<String>> getNames() {
+        return names;
+    }
+
+    public Part getPart() {
+        return part;
+    }
+
+    public Mission getMission() {
+        return mission;
+    }
 }

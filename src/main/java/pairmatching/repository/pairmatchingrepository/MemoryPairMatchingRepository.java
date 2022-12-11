@@ -1,6 +1,8 @@
 package pairmatching.repository.pairmatchingrepository;
 
+import pairmatching.domain.Mission;
 import pairmatching.domain.Pair;
+import pairmatching.domain.Part;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +13,10 @@ public class MemoryPairMatchingRepository implements PairMatchingRepository {
     private final List<Pair> pairs = new ArrayList<>();
 
     @Override
-    public Optional<Pair> findPairByMission() {
-        return Optional.empty();
+    public Optional<Pair> findPairByMission(Mission mission) {
+        return pairs.stream()
+                .filter(pair -> pair.getMission().equals(mission))
+                .findAny();
     }
 
     @Override
