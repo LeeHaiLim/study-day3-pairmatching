@@ -39,7 +39,8 @@
 
 - MatchingRepository : 매칭 정보를 저장하는 역할
   - [ ] 매칭 정보를 저장함
-  - [ ] 매칭 정보를 조회하는 역할
+  - [x] 매칭 정보를 조회하는 역할
+  - [ ] 매칭 정보가 있는지 확인하는 기능
 
 - Mission 
   - [x] MatchingRepository를 구분해주는 Mission enum 

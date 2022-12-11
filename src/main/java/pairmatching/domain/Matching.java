@@ -24,6 +24,11 @@ public class Matching {
                 && this.mission == matching.getMission();
     }
 
+    public boolean isSameMatching(Course course, Mission mission) {
+        return this.course == course
+                && this.mission == mission;
+    }
+
     public boolean isExistOverlappedPair(Matching matching) {
         for (Pair pair : this.pairs) {
             if (pair.isPairOverlapped(matching.getPairs())) {
