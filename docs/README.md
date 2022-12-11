@@ -35,7 +35,7 @@
 
 - CrewRepository : Crew 정보를 저장
   - [x] 초기 정보를 통해 Repository를 설정
-  - [x] 정보를 호출하는 기능
+  - [ ] 정보를 호출하는 기능
 
 - MatchingRepository : 매칭 정보를 저장하는 역할
   - [ ] 매칭 정보를 저장함
