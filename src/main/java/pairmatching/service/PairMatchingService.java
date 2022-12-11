@@ -42,8 +42,8 @@ public class PairMatchingService {
                 .orElseThrow(() -> new IllegalArgumentException("[ERROR]"));
     }
 
-    public void initPair() {
-
+    public void deletePair() {
+        pairMatchingRepository.deleteAll();
     }
 
     private List<List<String>> getPairs(Part part) {

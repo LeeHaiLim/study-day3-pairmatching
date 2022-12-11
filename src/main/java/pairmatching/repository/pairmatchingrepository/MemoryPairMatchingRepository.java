@@ -27,6 +27,6 @@ public class MemoryPairMatchingRepository implements PairMatchingRepository {
 
     @Override
     public void deleteAll() {
-
+        pairs.clear();
     }
 }

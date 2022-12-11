@@ -19,11 +19,11 @@
 - ### Service : PairMatchingService
   - [x] 페어 매칭 기능 - #createPairs()
   - [x] 페어 조회 기능 - #findPair()
-  - [ ] 페어 초기화 기능 - #initPair()
+  - [x] 페어 초기화 기능 - #initPair()
 - ### Repository : PairMatchingRepository
   - [x] 미션으로 매칭된 페어들 조회 - #getPairByMission()
   - [x] 생성된 페어들 저장 - #save()
-  - [ ] 페어 전체 삭제 - #deleteAll()
+  - [x] 페어 전체 삭제 - #deleteAll()
 ---
 ## 미션 매칭한 후 매칭된 미션을 저장 domain : Mission
 - [x] 미션의 이름을 받아오는 기능 - #getName()
