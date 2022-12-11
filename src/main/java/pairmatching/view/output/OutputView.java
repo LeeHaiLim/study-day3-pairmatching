@@ -1,5 +1,9 @@
 package pairmatching.view.output;
 
+import pairmatching.dto.MatchingDto;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class OutputView {
 
     private static final String INTRODUCING_FUNCTION =
@@ -14,6 +18,9 @@ public class OutputView {
             "############################################";
     private static final String INITIALIZING_FINISH =
             "\n초기화 되었습니다. ";
+    private static final String PAIR_MATCHING_RESULT =
+            "\n페어 매칭 결과입니다.";
+    private static final String PAIR_DELIMITER = " : ";
 
     public void printMissions() {
         print(INTRODUCING_FUNCTION);
@@ -23,8 +30,21 @@ public class OutputView {
         print(INITIALIZING_FINISH);
     }
 
-    public void printMatchingResult() {
+    public void printErrorMessage(Exception exception) {
+        print(exception.getMessage());
+    }
 
+    public void printMatchingResult(MatchingDto dto) {
+        print(PAIR_MATCHING_RESULT);
+        for (List<String> pair : dto.getPairs()) {
+            printPair(pair);
+        }
+    }
+
+    private void printPair(List<String> pair) {
+        String message = pair.stream()
+                .collect(Collectors.joining(PAIR_DELIMITER));
+        print(message);
     }
 
     private void print(String message) {
