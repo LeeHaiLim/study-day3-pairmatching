@@ -18,8 +18,12 @@ public class MissionService {
         this.missionRepository = missionRepository;
     }
 
-    public void createMission() {
-
+    public void createMissionPairMatching(Part part, String missionName) {
+        Optional<Mission> mission = missionRepository.findByName(missionName, part);
+        if (!mission.isPresent()) {
+            throw new IllegalArgumentException("[ERROR]");
+        }
+        missionRepository.save(mission.get());
     }
 
     public void deleteAll() {
@@ -40,7 +44,7 @@ public class MissionService {
     }
 
     private List<Mission> initMissions(Part part) {
-        Mission mission1 = new Mission("자동차 경주", Level.ONE, part);
+        Mission mission1 = new Mission("자동차경주", Level.ONE, part);
         Mission mission2 = new Mission("로또", Level.ONE, part);
         Mission mission3 = new Mission("숫자야구게임", Level.ONE, part);
         Mission mission4 = new Mission("장바구니", Level.TWO, part);
