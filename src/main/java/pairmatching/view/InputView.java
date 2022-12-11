@@ -22,6 +22,11 @@ public class InputView {
                 .collect(Collectors.toList());
     }
 
+    public static String readCommend() {
+        InputMessage.retryMessage();
+        return Console.readLine();
+    }
+
     private static void validateMissionShape(String input) {
         boolean result = Arrays.stream(input.split(MISSION_INPUT_DELIMITER))
                 .allMatch(value -> value.matches(MISSION_INPUT_REGEX));
