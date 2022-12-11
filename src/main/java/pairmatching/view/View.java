@@ -31,12 +31,12 @@ public class View {
             "네 | 아니오";
     private static final String INIT = "초기화 되었습니다.";
 
-    public static String selectFeature() {
+    public String selectFeature() {
         System.out.println(SELECT_FEATURE);
         return Console.readLine();
     }
 
-    public static String selectMenu() {
+    public String selectMenu() {
         System.out.println(MAIN_MENU);
         return Console.readLine();
     }
@@ -51,4 +51,10 @@ public class View {
             System.out.println(stringJoiner.toString());
         }
     }
+
+    public String askRematch() {
+        System.out.println(REMATCH);
+        return Console.readLine();
+    }
+
 }
