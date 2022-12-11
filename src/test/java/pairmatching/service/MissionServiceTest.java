@@ -4,11 +4,13 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import pairmatching.domain.Level;
 import pairmatching.domain.Mission;
 import pairmatching.domain.Part;
 import pairmatching.repository.missionrepository.MemoryMissionRepository;
 import pairmatching.repository.missionrepository.MissionRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -41,7 +43,10 @@ class MissionServiceTest {
     }
 
     @Test
-    void getMissionsByLevel() {
+    void getMissionsByLevelTest() {
+        List<Mission> missionsByLevel = missionService.getMissionsByLevel(Level.TWO, Part.FRONT_END);
+
+        Assertions.assertThat(missionsByLevel.size()).isEqualTo(3);
     }
 
     @Test

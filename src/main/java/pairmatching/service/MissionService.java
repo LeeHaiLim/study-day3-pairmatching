@@ -30,8 +30,8 @@ public class MissionService {
         missionRepository.deleteAll();
     }
 
-    public List<Mission> getMissionsByLevel() {
-        return null;
+    public List<Mission> getMissionsByLevel(Level level, Part part) {
+        return missionRepository.findAllMatchedByLevel(level, part);
     }
 
     public Optional<Mission> getByName() {
