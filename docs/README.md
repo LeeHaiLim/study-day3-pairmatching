@@ -29,7 +29,7 @@
 - [ ] 미션의 이름을 받아오는 기능 - #getName()
 - ### Service : MissionService
   - [x] 미션 매칭 - #createMission()
-  - [ ] 매칭된 미션 전체 삭제 - #deleteAll()
+  - [x] 매칭된 미션 전체 삭제 - #deleteAll()
   - [ ] 미션의 레벨로 매칭된 미션들 조회 - #getMissionsByLevel()
   - [ ] 미션의 이름으로 매칭된 미션 조회 - #getByName()
 - ### Repository : MissionRepository
