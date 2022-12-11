@@ -15,6 +15,7 @@ public class MainController {
     private CrewSaveService crewSaveService = new CrewSaveService();
     private MatchingService matchingService = new MatchingService();
     private MatchingInfoService matchingInfoService = new MatchingInfoService();
+    private MatchingController matchingController = new MatchingController();
 
     public MainController() {
         List<String> backendCrew = crewSaveService.getBackendCrew();
@@ -33,7 +34,7 @@ public class MainController {
 
     private void runService(Menu menu) {
         if (menu == Menu.MATCHING) {
-            // 페어 매칭
+            matchingController.run();
         }
         if (menu == Menu.INFO) {
             // 페어 조회
@@ -49,16 +50,6 @@ public class MainController {
         } catch (IllegalArgumentException e) {
             OutputView.printErrorMessage(e.getMessage());
             return readMenu();
-        }
-    }
-
-    public Mission readMission() {
-        try {
-            List<String> missions = InputView.readMission();
-            return Mission.of(missions.get(0), missions.get(1), missions.get(2));
-        } catch (IllegalArgumentException e) {
-            OutputView.printErrorMessage(e.getMessage());
-            return readMission();
         }
     }
 }
