@@ -2,6 +2,7 @@ package pairmatching.repository.missionrepository;
 
 import pairmatching.domain.Level;
 import pairmatching.domain.Mission;
+import pairmatching.domain.Part;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -21,16 +22,17 @@ public class MemoryMissionRepository implements MissionRepository {
     }
 
     @Override
-    public List<Mission> findAllMatchedByLevel(Level level) {
+    public List<Mission> findAllMatchedByLevel(Level level, Part part) {
         return missions.keySet().stream()
-                .filter(missions::get)
+                .filter(mission -> mission.getPart().equals(part) && mission.getLevel().equals(level))
                 .collect(Collectors.toList());
     }
 
     @Override
-    public Optional<Mission> findByName(String missionName) {
+    public Optional<Mission> findByName(String missionName,Part part) {
         return missions.keySet()
-                .stream().filter(mission -> mission.getName().equals(missionName))
+                .stream().filter(mission ->
+                        mission.getName().equals(missionName) && mission.getPart().equals(part))
                 .findAny();
     }
 
@@ -44,5 +46,10 @@ public class MemoryMissionRepository implements MissionRepository {
         for (Mission mission : missions) {
             this.missions.put(mission, false);
         }
+    }
+
+    @Override
+    public boolean isMatched(Mission mission) {
+        return this.missions.get(mission);
     }
 }
