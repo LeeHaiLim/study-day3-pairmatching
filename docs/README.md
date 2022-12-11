@@ -1,0 +1,63 @@
+# 기능목록
+
+## 입력을 담당하는 클래스 ClassName : InputView
+- [x] 메인 기능 입력받기 - #insertMainFunctionInput()
+- [x] 과정, 레벨, 미션 입력받기 - #insertDetails()
+- [x] 재매칭 여부 입력받기 - #insertReMatchingOrNot()
+---
+## 출력을 담당하는 클래스 ClassName : OutputView
+- [x] 매칭 결과 출력 - #printMatcingResult()
+- [x] 메인 화면 출력 - #printMain()
+- [x] 매칭 조건 입력창 출력 - #printMatchingDetails()
+- [x] 재매칭 여부 화면 출력 - #askReMatching()
+- [x] 초기화 문구 출력 - #printInitMessage()
+---
+## 페어를 매칭한다 domain : Pair
+- 멤버 : List<List<String>> names, Part part, Mission
+- ### Controller : PairMatchingController
+  - [ ] 메인기능 실행 - #run()
+- ### Service : PairMatchingService
+  - [x] 페어 매칭 기능 - #createPairs()
+  - [x] 페어 조회 기능 - #findPair()
+  - [x] 페어 초기화 기능 - #initPair()
+- ### Repository : PairMatchingRepository
+  - [x] 미션으로 매칭된 페어들 조회 - #getPairByMission()
+  - [x] 생성된 페어들 저장 - #save()
+  - [x] 페어 전체 삭제 - #deleteAll()
+---
+## 미션 매칭한 후 매칭된 미션을 저장 domain : Mission
+- [x] 미션의 이름을 받아오는 기능 - #getName()
+- ### Service : MissionService
+  - [x] 미션 매칭 - #createMission()
+  - [x] 매칭된 미션 전체 삭제 - #deleteAll()
+  - [x] 미션의 레벨로 미션들 조회 - #getMissionsByLevel()
+  - [x] 미션의 이름으로 매칭된 미션 조회 - #getByName()
+- ### Repository : MissionRepository
+  - [x] 미션 저장 - #save()
+  - [x] 매칭된 미션 전체 삭제 - #deleteAll()
+  - [x] 미션의 레벨로 매칭된 미션들 조회 - #findAllMatchedByLevel()
+  - [x] 미션의 이름으로 매칭된 미션 조회 - #findByName()
+  - [x] 전체 미션 조회 - #findAllMissions()
+  - [x] 저장소내의 map 멤버 초기화 기능 - #init()
+  - [x] 매칭 기록 존재 여부 조회 - #isMatched()
+---
+## 프론트엔드 크루들의 이름을 저장하는 일급컬렉션 ClassName : FrontMember
+- [x] 프론트엔드 크루원들의 페어매칭 결과 받아오기 - getPair()
+---
+## 백엔드 크루들의 이름을 저장하는 일급컬렉션 ClassName : BackMember
+- [x] 백엔드 크루원들의 페어매칭 결과 받아오기 - getPair()
+---
+## 파일을 읽어들이는 클래스 ClassName : FileReader
+- [x] `backend-crew.md` 를 읽어들이는 기능 - #readBackCrew()
+- [x] `frontend-crew.md` 를 읽어들이는 기능 - #readFrontCrew()
+- [x] 파일 읽어오는 통합 로직 - #readFile()
+
+## 메인 기능 enum Name : MainFunction
+- MATCHING, SEARCHING, INIT, QUIT
+- 입력값으로부터 변환하기 - #from()
+## 미션 레벨 enum Name : Level
+- ONE,TWO,THREE,FOUR,FIVE
+- 입력값으로부터 변환하기 - #from()
+## 파트 enum : Part
+- FRONT_END , BACK_END
+- 입력값으로부터 변환하기 - #from()
