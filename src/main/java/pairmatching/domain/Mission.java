@@ -12,4 +12,8 @@ public class Mission {
     public String getName() {
         return this.missionName;
     }
+
+    public Level getLevel() {
+        return this.level;
+    }
 }

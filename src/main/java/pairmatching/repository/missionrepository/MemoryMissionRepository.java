@@ -1,28 +1,36 @@
 package pairmatching.repository.missionrepository;
 
+import pairmatching.domain.Level;
 import pairmatching.domain.Mission;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class MemoryMissionRepository implements MissionRepository {
-    @Override
-    public void save() {
 
+    private final Map<Mission, Boolean> missions = new HashMap<>();
+
+    @Override
+    public void save(Mission mission) {
+        missions.replace(mission, true);
     }
 
     @Override
     public void deleteAll() {
-
+        missions.clear();
     }
 
     @Override
-    public List<Mission> findAllByLevel() {
-        return null;
+    public List<Mission> findAllMatchedByLevel(Level level) {
+        return missions.keySet().stream()
+                .filter(missions::get)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public Optional<Mission> findByName() {
-        return Optional.empty();
+    public Optional<Mission> findByName(String missionName) {
+        return missions.keySet()
+                .stream().filter(mission -> mission.getName().equals(missionName))
+                .findAny();
     }
 }
