@@ -34,7 +34,7 @@
   - [x] 프론트엔드 크루를 읽어오는 기능 #readFrontendCrews
 
 - CrewRepository : Crew 정보를 저장
-  - [ ] 초기 정보를 통해 Repository를 설정
+  - [x] 초기 정보를 통해 Repository를 설정
   - [ ] 정보를 호출하는 기능
 
 - MatchingRepository : 매칭 정보를 저장하는 역할
