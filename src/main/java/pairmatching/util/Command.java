@@ -18,8 +18,4 @@ public enum Command {
                 .findAny()
                 .orElseThrow(() -> new IllegalArgumentException("네, 아니오 중 하나를 입력해야 합니다."));
     }
-
-    public String code() {
-        return code;
-    }
 }

@@ -20,8 +20,4 @@ public enum FeatureMenu {
                 .findAny()
                 .orElseThrow(() -> new IllegalArgumentException("1, 2, 3, Q 중 하나를 입력해야 합니다."));
     }
-
-    public String code() {
-        return code;
-    }
 }
