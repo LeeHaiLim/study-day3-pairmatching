@@ -11,7 +11,7 @@ public class CrewRepository {
     private final List<Crew> backendCrews = new ArrayList<>();
     private final List<Crew> frontendCrews = new ArrayList<>();
 
-    CrewRepository() {
+    public CrewRepository() {
         initializeRepository();
     }
 
