@@ -13,8 +13,16 @@ public class OutputView {
             "  - 레벨5: \n" +
             "############################################";
 
-    public void printFunction() {
+    public void printMissions() {
         print(INTRODUCING_FUNCTION);
+    }
+
+    public void printFinishedInitializing() {
+        
+    }
+
+    public void printMatchingResult() {
+
     }
 
     private void print(String message) {

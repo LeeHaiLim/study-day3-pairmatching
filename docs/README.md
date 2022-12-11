@@ -27,6 +27,7 @@
   
 - OutputView : 출력 담당
   - [x] 현재 가지고 있는 과정, 미션을 보여주는 기능 #printMissions()
+  - [ ] 초기화 완료 출력 #printFinishedInitializing()
   - [ ] 페어 매칭 결과를 보여주는 기능 #printMatchingResult()
 
 - CrewReader : md 파일에 있는 Crew 정보를 읽어오는 기능
@@ -67,3 +68,9 @@
   - [x] 같은 코스, 과정인지 확인하는 기능 #isSameMatching
   - [x] 곂쳐있는 페어가 있는지 확인하는 기능 #isExistOverlappedPair
   - [x] 매칭 정보를 제공하는 기능 구현 #getMatchingDto()
+
+- MatchingService
+  - [ ] 페어 매칭 기능
+  - [ ] 현재 매칭되어 있는지 조회하는 기능
+  - [ ] 페어 조회 기능
+  - [ ] 페어 초기화 기능
