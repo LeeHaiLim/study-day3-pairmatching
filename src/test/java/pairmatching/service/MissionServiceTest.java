@@ -50,12 +50,16 @@ class MissionServiceTest {
     }
 
     @Test
-    void getByName() {
+    void getByNameTest() {
+        Mission mission = missionService.getByName(Part.FRONT_END, "장바구니");
+
+        Assertions.assertThat(mission.getLevel()).isEqualTo(Level.TWO);
     }
 
     @DisplayName("초기화 기능 테스트")
     @Test
     void init() {
+        missionService.deleteAll();
         missionService.init();
         Assertions.assertThat(missionRepository.findAllMissions().size()).isEqualTo(16);
     }
