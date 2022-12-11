@@ -10,7 +10,7 @@ import java.util.function.Supplier;
 
 public class InputView {
     private static final String RETRY_INPUT = "네";
-    private static final String NOT_RETRY_INPUT = "아니";
+    private static final String NOT_RETRY_INPUT = "아니오";
 
     public static MainFunction insertMainFunctionInput() {
         return repeat(() -> MainFunction.from(Console.readLine()));

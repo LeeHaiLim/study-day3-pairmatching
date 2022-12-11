@@ -6,13 +6,13 @@ import java.util.StringJoiner;
 public class OutputView {
     public static void printMatchingResult(List<List<String>> pairNames) {
         System.out.println(" ");
-        StringJoiner sj = new StringJoiner(" : ");
         for (List<String> pairName : pairNames) {
+            StringJoiner sj = new StringJoiner(" : ");
             for (String name : pairName) {
                 sj.add(name);
             }
+            System.out.println(sj);
         }
-        System.out.println(sj);
     }
 
     public static void printMain() {

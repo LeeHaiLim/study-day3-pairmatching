@@ -9,7 +9,7 @@ import static pairmatching.domain.PairMatcher.matchPair;
 public class BackMember {
     private final List<String> backMembers;
 
-    public BackMember(List<String> backMembers,Part ONE) {
+    public BackMember(List<String> backMembers) {
         this.backMembers = backMembers;
     }
 

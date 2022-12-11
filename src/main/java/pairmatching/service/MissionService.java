@@ -39,6 +39,10 @@ public class MissionService {
                 .orElseThrow(() -> new IllegalArgumentException("[ERROR"));
     }
 
+    public boolean isMatched(Mission mission) {
+        return missionRepository.isMatched(mission);
+    }
+
     public void init() {
         missionRepository.init(initMissions(Part.BACK_END));
         missionRepository.init(initMissions(Part.FRONT_END));
