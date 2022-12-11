@@ -1,5 +1,7 @@
 # 미션 - 페어매칭관리 애플리케이션
 
+[출처](https://github.com/woowacourse/java-pairmatching-precourse)
+
 ## 🔍 진행방식
 
 - 미션은 **기능 요구사항, 프로그래밍 요구사항, 과제 진행 요구사항** 세 가지로 구성되어 있다.
