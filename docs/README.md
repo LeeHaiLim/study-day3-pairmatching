@@ -6,11 +6,11 @@
 - [x] 재매칭 여부 입력받기 - #insertReMatchingOrNot()
 ---
 ## 출력을 담당하는 클래스 ClassName : OutputView
-- [ ] 매칭 결과 출력 - #printMatcingResult()
-- [ ] 메인 화면 출력 - #printMain()
-- [ ] 매칭 조건 입력창 출력 - #printMatchingDetails()
-- [ ] 재매칭 여부 화면 출력 - #askReMatching()
-- [ ] 초기화 문구 출력 - #printInitMessage()
+- [x] 매칭 결과 출력 - #printMatcingResult()
+- [x] 메인 화면 출력 - #printMain()
+- [x] 매칭 조건 입력창 출력 - #printMatchingDetails()
+- [x] 재매칭 여부 화면 출력 - #askReMatching()
+- [x] 초기화 문구 출력 - #printInitMessage()
 ---
 ## 페어를 매칭한다 domain : Pair
 - 멤버 : List<List<String>> names, Part part, Mission
