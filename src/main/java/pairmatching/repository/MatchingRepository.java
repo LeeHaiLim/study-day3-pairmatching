@@ -19,6 +19,15 @@ public class MatchingRepository {
         return null;
     }
 
+    private Matching getMatching(Matching comparedMatching) {
+        for (Matching matching : matchingList) {
+            if (matching.isSameMatching(comparedMatching)){
+                return matching;
+            }
+        }
+        return null;
+    }
+
     public boolean isAlreadyExist(Course course, Mission mission) {
         for (Matching matching : matchingList) {
             if (matching.isSameMatching(course, mission)){
@@ -26,5 +35,14 @@ public class MatchingRepository {
             }
         }
         return false;
+    }
+
+    public void saveMatching(Matching matching) {
+        Matching existMatching = getMatching(matching);
+        if (existMatching != null) {
+            matchingList.remove(existMatching);
+        }
+
+        matchingList.add(matching);
     }
 }
