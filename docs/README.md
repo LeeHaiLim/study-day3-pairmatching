@@ -49,7 +49,7 @@
 
 - Crew : 회원의 정보를 가지고 있음
   - [ ] equals()
-  - [ ] getName()
+  - [x] getName()
 
 - Matching : 매칭 정보를 가지고 있음
   - [ ] 
