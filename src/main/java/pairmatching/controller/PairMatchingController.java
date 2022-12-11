@@ -35,7 +35,11 @@ public class PairMatchingController {
     private void navigate(MainFunction mainFunction) {
         if (mainFunction.equals(MainFunction.MATCHING)) {
             OutputView.printMatchingDetails();
-            createMatching();
+            try {
+                createMatching();
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
         }
         if (mainFunction.equals(MainFunction.SEARCHING)) {
             OutputView.printMatchingResult(searchMatchResult());
@@ -45,7 +49,7 @@ public class PairMatchingController {
         }
     }
 
-    private void createMatching() {
+    private void createMatching() throws IllegalArgumentException{
         List<String> repeat = InputView.repeat(InputView::insertDetails);
         String part = repeat.get(0);
         String missionName = repeat.get(2);

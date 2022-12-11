@@ -23,16 +23,14 @@ public class PairMatchingService {
         this.frontMember = frontMember;
     }
 
-    public Pair createPairs(Part part, String missionName) {
+    public Pair createPairs(Part part, String missionName) throws IllegalArgumentException {
         Mission mission = missionRepository.findByName(missionName, part)
                 .orElseThrow(() -> new IllegalArgumentException("[ERROR]"));
 
         List<List<String>> pairs = getPairs(part);
 
         Pair pair = new Pair(pairs, part, mission);
-        if (duplicated(mission.getLevel(), part, pairs)) {
-            return pair;
-        }
+        duplicated(mission.getLevel(), part, pairs);
         return pairMatchingRepository.save(pair);
     }
 
@@ -55,7 +53,7 @@ public class PairMatchingService {
         return backMember.getPair();
     }
 
-    private boolean duplicated(Level level, Part part, List<List<String>> pairs) {
+    private void duplicated(Level level, Part part, List<List<String>> pairs) {
         List<Mission> allMatchedByLevel = missionRepository.findAllMatchedByLevel(level, part);
         for (Mission mission : allMatchedByLevel) {
             Pair pair = findPair(part, mission.getName());
@@ -63,9 +61,8 @@ public class PairMatchingService {
             Optional<List<String>> any = pairs.stream().filter(names::contains)
                     .findAny();
             if (any.isPresent()) {
-                return true;
+                throw new IllegalArgumentException("[ERROR] 같은 레벨 내에 동일한 매칭이 존재합니다.");
             }
         }
-        return false;
     }
 }
