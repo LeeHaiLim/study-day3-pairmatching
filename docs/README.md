@@ -37,6 +37,7 @@
   - [x] 매칭된 미션 전체 삭제 - #deleteAll()
   - [x] 미션의 레벨로 매칭된 미션들 조회 - #findAllMatchedByLevel()
   - [x] 미션의 이름으로 매칭된 미션 조회 - #findByName()
+  - [x] 전체 미션 조회 - #findAllMissions()
 ---
 ## 프론트엔드 크루들의 이름을 저장하는 일급컬렉션 ClassName : FrontMember
 - [ ] 프론트엔드 크루원들의 이름 받아오기 - getFrontNames()

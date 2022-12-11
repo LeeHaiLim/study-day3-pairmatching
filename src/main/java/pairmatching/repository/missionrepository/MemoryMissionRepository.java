@@ -33,4 +33,8 @@ public class MemoryMissionRepository implements MissionRepository {
                 .stream().filter(mission -> mission.getName().equals(missionName))
                 .findAny();
     }
+
+    public List<Mission> findAllMissions() {
+        return new ArrayList<>(missions.keySet());
+    }
 }
