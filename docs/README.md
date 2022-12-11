@@ -31,7 +31,7 @@
 
 - CrewReader : md 파일에 있는 Crew 정보를 읽어오는 기능
   - [x] 백엔드 크루를 읽어오는 기능 #readBackendCrews
-  - [ ] 프론트엔드 크루를 읽어오는 기능 #readFrontendCrews
+  - [x] 프론트엔드 크루를 읽어오는 기능 #readFrontendCrews
 
 - CrewRepository : Crew 정보를 저장
   - [ ] 초기 정보를 통해 Repository를 설정

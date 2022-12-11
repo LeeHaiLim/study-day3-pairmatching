@@ -21,6 +21,11 @@ public class CrewReader {
         return setCrewsForm(scanner);
     }
 
+    public static List<Crew> readFrontendCrews() {
+        Scanner scanner = setScannerByFilePath(FILE_PATH + FRONTEND_FILE_NAME);
+        return setCrewsForm(scanner);
+    }
+
     private static Scanner setScannerByFilePath(String filePath) {
         try {
             return new Scanner(new File(filePath));

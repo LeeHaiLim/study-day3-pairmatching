@@ -15,4 +15,12 @@ public class CrewReaderTest {
         // backend-crew.md 파일 정보에 따라 값이 달라질 수 있다.
         assertThat(result.size()).isEqualTo(20);
     }
+
+    @Test
+    void readFrontendCrewTest() {
+        List<Crew> result = CrewReader.readFrontendCrews();
+
+        // frontend-crew.md 파일 정보에 따라 값이 달라질 수 있다.
+        assertThat(result.size()).isEqualTo(15);
+    }
 }
