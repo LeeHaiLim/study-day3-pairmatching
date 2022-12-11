@@ -37,7 +37,7 @@ public class MainController {
             matchingController.run();
         }
         if (menu == Menu.INFO) {
-            // 페어 조회
+            matchingController.runMatchingInfo();
         }
         if (menu == Menu.RESET) {
             // 페어 초기화

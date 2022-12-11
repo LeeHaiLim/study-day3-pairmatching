@@ -7,6 +7,7 @@ import pairmatching.domain.Pair;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public class MatchingRepository {
     private static Map<Mission, List<Pair>> matchingResults = new HashMap<>();
@@ -16,7 +17,8 @@ public class MatchingRepository {
     }
 
     public List<Pair> findByMission(Mission mission) {
-        return matchingResults.get(mission);
+        return Optional.ofNullable(matchingResults.get(mission))
+                .orElseThrow(() -> new IllegalArgumentException("매칭 이력이 없습니다."));
     }
     public boolean hasPair(Mission mission) {
         return matchingResults.containsKey(mission);

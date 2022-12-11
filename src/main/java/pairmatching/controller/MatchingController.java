@@ -23,6 +23,16 @@ public class MatchingController {
         matchPair(mission);
     }
 
+    public void runMatchingInfo() {
+        Mission mission = readMission();
+        try {
+            List<Pair> matchResult = matchingService.getMatchResult(mission);
+            OutputView.printMatchResult(MatchResultDto.from(matchResult));
+        } catch (IllegalArgumentException e) {
+            OutputView.printErrorMessage(e.getMessage());
+        }
+    }
+
     private void matchPair(Mission mission) {
         try {
             matchingService.matchPair(mission);
@@ -31,7 +41,6 @@ public class MatchingController {
         } catch (IllegalArgumentException e) {
             OutputView.printErrorMessage(e.getMessage());
         }
-
     }
 
     public Mission readMission() {
