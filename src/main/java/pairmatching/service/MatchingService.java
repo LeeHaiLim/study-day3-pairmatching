@@ -21,8 +21,8 @@ public class MatchingService {
         if (crews.size() < 2) {
             throw new IllegalArgumentException("2명 이상일 때 매칭할 수 있습니다.");
         }
-        if (matchingRepository.getSameLevelPairs(missionGroup).isEmpty()) {
             return getRandomOrder(missionGroup, crews);
+        if (matchingRepository.getSameLevelPairs(missionGroup)==null) {
         }
         return getValidMatchingPairs(missionGroup, crews);
     }
@@ -30,7 +30,7 @@ public class MatchingService {
     private List<Pair> getValidMatchingPairs(MissionGroup missionGroup, List<String> crews) {
         for (int i = 0; i < 3; i++) {
             List<Pair> randomOrder = getRandomOrder(missionGroup, crews);
-            List<Pair> repositoryPairs = matchingRepository.getSameLevelPairs(missionGroup).get();
+            List<Pair> repositoryPairs = matchingRepository.getSameLevelPairs(missionGroup);
             if (!hasSamePair(randomOrder, repositoryPairs)) {
                 return randomOrder;
             }
@@ -63,7 +63,7 @@ public class MatchingService {
         return pairs;
     }
 
-    public Optional<List<Pair>> getMatchResult(MissionGroup missionGroup) {
+    public List<Pair> getMatchResult(MissionGroup missionGroup) {
         return matchingRepository.findByMission(missionGroup);
     }
 

@@ -6,7 +6,6 @@ import pairmatching.domain.Pair;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class MatchingRepository {
@@ -16,16 +15,16 @@ public class MatchingRepository {
         matchingResults.put(missionGroup, pairs);
     }
 
-    public Optional<List<Pair>> findByMission(MissionGroup missionGroup) {
-        return Optional.ofNullable(matchingResults.get(missionGroup));
+    public List<Pair> findByMission(MissionGroup missionGroup) {
+        return matchingResults.get(missionGroup);
     }
 
-    public Optional<List<Pair>> getSameLevelPairs(MissionGroup missionGroup) {
-        return Optional.ofNullable(matchingResults.keySet().stream()
+    public List<Pair> getSameLevelPairs(MissionGroup missionGroup) {
+        return matchingResults.keySet().stream()
                 .filter(key -> key.isSameCourseAndLevel(missionGroup))
                 .map(matchingResults::get)
                 .flatMap(List::stream)
-                .collect(Collectors.toList()));
+                .collect(Collectors.toList());
     }
 
     public void clear() {

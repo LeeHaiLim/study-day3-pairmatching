@@ -1,8 +1,8 @@
 package pairmatching.controller;
 
-import pairmatching.domain.menu.Command;
 import pairmatching.domain.MissionGroup;
 import pairmatching.domain.Pair;
+import pairmatching.domain.menu.Command;
 import pairmatching.dto.MatchResultDto;
 import pairmatching.service.MatchingService;
 import pairmatching.view.InputMessage;
@@ -22,7 +22,7 @@ public class MatchingController {
         MissionGroup missionGroup;
         do {
             missionGroup = read(MissionGroup::of, InputView::readMission);
-            if (matchingService.getMatchResult(missionGroup).isPresent()) {
+            if (matchingService.getMatchResult(missionGroup) != null) {
                 retry = read(Command::from, InputView::readCommend) == Command.YES;
             }
         } while (!retry);
@@ -38,8 +38,10 @@ public class MatchingController {
     public void runMatchingInfo() {
         InputMessage.missionInfoMessage();
         MissionGroup missionGroup = read(MissionGroup::of, InputView::readMission);
-        List<Pair> matchResult = matchingService.getMatchResult(missionGroup)
-                .orElseThrow(() -> new IllegalArgumentException("매칭 이력이 없습니다."));
+        List<Pair> matchResult = matchingService.getMatchResult(missionGroup);
+        if (matchResult == null) {
+            throw new IllegalArgumentException("매칭 이력이 없습니다.");
+        }
         OutputView.printMatchResult(MatchResultDto.from(matchResult));
     }
 
