@@ -1,7 +1,7 @@
 package pairmatching.view;
 
 public class InputMessage {
-    public static void MenuMessage() {
+    public static void menuMessage() {
         System.out.println("\n기능을 선택하세요.");
         System.out.println("1. 페어 매칭");
         System.out.println("2. 페어 조회");
@@ -9,7 +9,7 @@ public class InputMessage {
         System.out.println("Q. 종료");
     }
 
-    public static void MissionInfoMessage() {
+    public static void missionInfoMessage() {
         System.out.println("#############################################\n" +
                 "과정: 백엔드 | 프론트엔드\n" +
                 "미션:\n" +
