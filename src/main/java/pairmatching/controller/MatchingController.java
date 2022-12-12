@@ -17,7 +17,7 @@ public class MatchingController {
     private MatchingService matchingService = new MatchingService();
 
     public void matchPairs() {
-        InputMessage.MissionInfoMessage();
+        InputMessage.missionInfoMessage();
         boolean retry = true;
         MissionGroup missionGroup;
         do {
@@ -36,7 +36,7 @@ public class MatchingController {
     }
 
     public void runMatchingInfo() {
-        InputMessage.MissionInfoMessage();
+        InputMessage.missionInfoMessage();
         MissionGroup missionGroup = read(MissionGroup::of, InputView::readMission);
         List<Pair> matchResult = matchingService.getMatchResult(missionGroup)
                 .orElseThrow(() -> new IllegalArgumentException("매칭 이력이 없습니다."));

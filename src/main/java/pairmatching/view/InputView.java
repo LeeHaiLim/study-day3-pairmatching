@@ -10,7 +10,7 @@ public class InputView {
     private static final String MISSION_INPUT_DELIMITER = ",";
 
     public static String readMenu() {
-        InputMessage.MenuMessage();
+        InputMessage.menuMessage();
         return Console.readLine();
     }
 
