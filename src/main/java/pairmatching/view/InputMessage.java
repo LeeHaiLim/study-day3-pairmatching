@@ -2,7 +2,7 @@ package pairmatching.view;
 
 public class InputMessage {
     public static void MenuMessage() {
-        System.out.println("기능을 선택하세요.");
+        System.out.println("\n기능을 선택하세요.");
         System.out.println("1. 페어 매칭");
         System.out.println("2. 페어 조회");
         System.out.println("3. 페어 초기화");
@@ -18,7 +18,7 @@ public class InputMessage {
                 "  - 레벨3: \n" +
                 "  - 레벨4: 성능개선 | 배포\n" +
                 "  - 레벨5: \n" +
-                "############################################\n");
+                "############################################");
     }
 
     public static void retryMessage() {

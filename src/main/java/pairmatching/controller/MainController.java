@@ -1,7 +1,7 @@
 package pairmatching.controller;
 
-import pairmatching.domain.Course;
-import pairmatching.domain.Menu;
+import pairmatching.domain.menu.Course;
+import pairmatching.domain.menu.Menu;
 import pairmatching.service.CrewSaveService;
 import pairmatching.view.InputView;
 import pairmatching.view.OutputView;
@@ -15,8 +15,8 @@ public class MainController {
     public MainController() {
         List<String> backendCrew = crewSaveService.getBackendCrew();
         List<String> frontendCrew = crewSaveService.getFrontendCrew();
-        crewSaveService.saveCrewNames(backendCrew, Course.BACKEND);
-        crewSaveService.saveCrewNames(frontendCrew, Course.FRONTEND);
+        crewSaveService.saveCrewNamesByCourse(backendCrew, Course.BACKEND);
+        crewSaveService.saveCrewNamesByCourse(frontendCrew, Course.FRONTEND);
     }
 
     public void run() {
@@ -28,15 +28,18 @@ public class MainController {
     }
 
     private void runService(Menu menu) {
-        if (menu == Menu.MATCHING) {
-            matchingController.run();
-        }
-        if (menu == Menu.INFO) {
-            matchingController.runMatchingInfo();
-        }
-        if (menu == Menu.RESET) {
-            matchingController.resetPairMatching();
-            OutputView.printMessage("초기화 되었습니다.");
+        try {
+            if (menu == Menu.MATCHING) {
+                matchingController.matchPairs();
+            }
+            if (menu == Menu.INFO) {
+                matchingController.runMatchingInfo();
+            }
+            if (menu == Menu.RESET) {
+                matchingController.clear();
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
         }
     }
 

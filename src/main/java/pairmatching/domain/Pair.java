@@ -8,25 +8,22 @@ public class Pair {
     private final List<Crew> pair = new ArrayList<>();
 
     private Pair(List<Crew> crews) {
-        crews.stream().forEach(pair::add);
+        pair.addAll(crews);
     }
 
     public static Pair of(List<Crew> crews) {
         return new Pair(crews);
     }
 
-    public boolean isContain(Crew crew) {
-        return pair.contains(crew);
+    public void addPair(Crew crew) {
+        pair.add(crew);
     }
 
-    public boolean isSamePair(List<Crew> crews) {
-        long count = crews.stream()
-                .filter(this::isContain)
+    public boolean isSamePair(Pair comparePair) {
+        long count = comparePair.pair.stream()
+                .filter(crew -> pair.contains(crew))
                 .count();
-        if (count >= 2) {
-            return true;
-        }
-        return false;
+        return count >= 2;
     }
 
     public List<String> getPair() {

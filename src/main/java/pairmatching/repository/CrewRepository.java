@@ -1,6 +1,7 @@
 package pairmatching.repository;
 
 import pairmatching.domain.Crew;
+import pairmatching.domain.menu.Course;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,14 +14,21 @@ public class CrewRepository {
         crews.add(crew);
     }
 
-    public List<String> getBackendCrews() {
+    public List<String> getCrewsByCourse(Course course) {
+        if (course == Course.BACKEND) {
+            return getBackendCrews();
+        }
+        return getFrontendCrews();
+    }
+
+    private List<String> getBackendCrews() {
         return crews.stream()
                 .filter(crew -> crew.isBackendCrew())
                 .map(Crew::getName)
                 .collect(Collectors.toList());
     }
 
-    public List<String> getFrontendCrews() {
+    private List<String> getFrontendCrews() {
         return crews.stream()
                 .filter(crew -> crew.isFrontendCrew())
                 .map(Crew::getName)

@@ -1,6 +1,6 @@
 package pairmatching.service;
 
-import pairmatching.domain.Course;
+import pairmatching.domain.menu.Course;
 import pairmatching.domain.Crew;
 import pairmatching.repository.CrewRepository;
 
@@ -21,7 +21,7 @@ public class CrewSaveService {
         return readCrewInfo(file);
     }
 
-    public void saveCrewNames(List<String> crewNames, Course course) {
+    public void saveCrewNamesByCourse(List<String> crewNames, Course course) {
         crewNames.stream()
                 .map(name -> Crew.of(course, name))
                 .forEach(crewRepository::addCrew);

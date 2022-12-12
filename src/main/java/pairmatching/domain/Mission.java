@@ -1,53 +1,36 @@
 package pairmatching.domain;
 
-import java.util.Objects;
+import pairmatching.domain.menu.Level;
 
-public class Mission {
-    private final Course course;
+import java.util.Arrays;
+
+public enum Mission {
+    RACING_CAR(Level.LEVEL1, "자동차경주"),
+    LOTTO(Level.LEVEL1, "로또"),
+    NUMBER_BASEBALL(Level.LEVEL1, "숫자야구게임"),
+    SHOPPING_BAG(Level.LEVEL2, "장바구니"),
+    PAYMENT(Level.LEVEL2, "결제"),
+    SUBWAY(Level.LEVEL2, "지하철노선도"),
+    REFACTORING(Level.LEVEL4, "성능개선"),
+    DISTRIBUTE(Level.LEVEL4, "배포");
+
     private final Level level;
-    private final MissionName name;
+    private final String name;
 
-    private Mission(Course course, Level level, MissionName name) {
-        this.course = course;
+    Mission(Level level, String name) {
         this.level = level;
         this.name = name;
     }
 
-    public static Mission of(String course, String leven, String name) {
-        return new Mission(Course.from(course), Level.from(leven), MissionName.from(name));
+    public static Mission of(String inputLevel, String inputName) {
+        return Arrays.stream(Mission.values())
+                .filter(mission -> mission.level.equals(Level.from(inputLevel))
+                        && mission.name.equals(inputName))
+                .findAny()
+                .orElseThrow(() -> new IllegalArgumentException("올바른 레벨과 미션을 선택해주세요."));
     }
 
     public boolean isSameLevel(Mission mission) {
-        if (mission.course.equals(this.course) && (mission.level.equals(this.level))) {
-            return true;
-        }
-        return false;
-    }
-
-    public boolean isBackendCourse() {
-        return this.course == Course.BACKEND;
-    }
-
-    public boolean isFrontendCourse() {
-        return this.course == Course.FRONTEND;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(course, level, name);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (!(obj instanceof Mission)) {
-            return false;
-        }
-        Mission mission = (Mission) obj;
-        if (this.course.equals((mission.course))
-                && this.level.equals((mission.level))
-                && this.name.equals((mission.name))) {
-            return true;
-        }
-        return false;
+        return this.level == mission.level;
     }
 }

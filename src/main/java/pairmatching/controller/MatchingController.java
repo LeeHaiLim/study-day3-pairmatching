@@ -1,7 +1,7 @@
 package pairmatching.controller;
 
-import pairmatching.domain.Command;
-import pairmatching.domain.Mission;
+import pairmatching.domain.menu.Command;
+import pairmatching.domain.MissionGroup;
 import pairmatching.domain.Pair;
 import pairmatching.dto.MatchResultDto;
 import pairmatching.service.MatchingService;
@@ -10,73 +10,50 @@ import pairmatching.view.InputView;
 import pairmatching.view.OutputView;
 
 import java.util.List;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 public class MatchingController {
     private MatchingService matchingService = new MatchingService();
 
-    public void run() {
+    public void matchPairs() {
         InputMessage.MissionInfoMessage();
-        boolean isContinue = true;
-        while(isContinue) {
-            Mission mission = readMission();
-            if (matchingService.hasPair(mission)) {
-                isContinue = retryMatching();
+        boolean retry = true;
+        MissionGroup missionGroup;
+        do {
+            missionGroup = read(MissionGroup::of, InputView::readMission);
+            if (matchingService.getMatchResult(missionGroup).isPresent()) {
+                retry = read(Command::from, InputView::readCommend) == Command.YES;
             }
-            if (isContinue) {
-                matchPair(mission);
-                isContinue = false;
-            }
-        }
+        } while (!retry);
+        saveMatchingPairs(missionGroup);
     }
 
-    public boolean retryMatching() {
-        if (readCommend() == Command.NO) {
-            return false;
-        }
-        return true;
+    private void saveMatchingPairs(MissionGroup missionGroup) {
+        List<Pair> matchResult = matchingService.matchPairs(missionGroup);
+        matchingService.saveMatchResult(missionGroup, matchResult);
+        OutputView.printMatchResult(MatchResultDto.from(matchResult));
     }
 
     public void runMatchingInfo() {
         InputMessage.MissionInfoMessage();
-        Mission mission = readMission();
-        try {
-            List<Pair> matchResult = matchingService.getMatchResult(mission);
-            OutputView.printMatchResult(MatchResultDto.from(matchResult));
-        } catch (IllegalArgumentException e) {
-            OutputView.printErrorMessage(e.getMessage());
-        }
+        MissionGroup missionGroup = read(MissionGroup::of, InputView::readMission);
+        List<Pair> matchResult = matchingService.getMatchResult(missionGroup)
+                .orElseThrow(() -> new IllegalArgumentException("매칭 이력이 없습니다."));
+        OutputView.printMatchResult(MatchResultDto.from(matchResult));
     }
 
-    public void resetPairMatching() {
-        matchingService.resetPairMatching();
+    public void clear() {
+        matchingService.clear();
+        OutputView.printMessage("초기화 되었습니다.");
     }
 
-    private void matchPair(Mission mission) {
+    private <T, R> R read(Function<T, R> object, Supplier<T> input) {
         try {
-            matchingService.matchPair(mission);
-            List<Pair> matchResult = matchingService.getMatchResult(mission);
-            OutputView.printMatchResult(MatchResultDto.from(matchResult));
+            return object.apply(input.get());
         } catch (IllegalArgumentException e) {
             OutputView.printErrorMessage(e.getMessage());
-        }
-    }
-
-    public Mission readMission() {
-        try {
-            List<String> missions = InputView.readMission();
-            return Mission.of(missions.get(0), missions.get(1), missions.get(2));
-        } catch (IllegalArgumentException e) {
-            OutputView.printErrorMessage(e.getMessage());
-            return readMission();
-        }
-    }
-
-    public Command readCommend() {
-        try {
-            return Command.from(InputView.readCommend());
-        } catch (IllegalArgumentException e) {
-            OutputView.printErrorMessage(e.getMessage());
-            return readCommend();
+            return read(object, input);
         }
     }
 }
