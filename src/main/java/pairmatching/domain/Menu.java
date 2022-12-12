@@ -1,12 +1,14 @@
 package pairmatching.domain;
 
-import java.util.Arrays;
+import java.util.Collections;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public enum Menu {
-    MATCHING("1"),
-    INFO("2"),
-    RESET("3"),
-    QUIT("Q");
+    MATCHING("1"), INFO("2"), RESET("3"), QUIT("Q");
 
     private final String code;
 
@@ -14,10 +16,13 @@ public enum Menu {
         this.code = code;
     }
 
-    public static Menu from(String input) {
-        return Arrays.stream(Menu.values())
-                .filter(menu -> menu.code.equals(input))
-                .findAny()
-                .orElseThrow(() -> new IllegalArgumentException("올바른 기능을 선택해주세요"));
+    private String getCode() {
+        return code;
+    }
+
+    private static final Map<String, Menu> menus = Collections.unmodifiableMap(Stream.of(values()).collect(Collectors.toMap(Menu::getCode, Function.identity())));
+
+    public static Menu from(String number) {
+        return Optional.ofNullable(menus.get(number)).orElseThrow(() -> new IllegalArgumentException("선택할 수 없는 기능입니다."));
     }
 }

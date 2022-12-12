@@ -1,6 +1,11 @@
 package pairmatching.domain;
 
-import java.util.Arrays;
+import java.util.Collections;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public enum Command {
     YES("네"),
@@ -12,10 +17,16 @@ public enum Command {
         this.code = code;
     }
 
+    private String getCode() {
+        return code;
+    }
+
+    private static final Map<String, Command> menus =
+            Collections.unmodifiableMap(Stream.of(values())
+                    .collect(Collectors.toMap(Command::getCode, Function.identity())));
+
     public static Command from(String input) {
-        return Arrays.stream(Command.values())
-                .filter(command -> command.code.equals(input))
-                .findAny()
-                .orElseThrow(() -> new IllegalArgumentException("네 / 아니오를 입력해주세요."));
+        return Optional.ofNullable(menus.get(input)).orElseThrow(
+                () -> new IllegalArgumentException("네 / 아니오를 입력해주세요."));
     }
 }
