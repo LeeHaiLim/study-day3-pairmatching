@@ -8,6 +8,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 import pairmatching.Application;
+import pairmatching.service.CrewSaveService;
 
 class ApplicationTest extends NsTest {
 
@@ -25,6 +26,17 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 홀수_인원_페어_매칭() {
+        assertShuffleTest(
+            () -> {
+                run("1", "백엔드, 레벨1, 로또", "Q");
+                assertThat(output()).contains("태웅 : 태섭", "치수 : 백호 : 가나");
+            },
+            Arrays.asList("태웅", "태섭", "치수", "백호", "가나")
+        );
+    }
+
+    @Test
     void 없는_미션에_대한_예외_처리() {
         assertSimpleTest(
             () -> {
@@ -33,6 +45,7 @@ class ApplicationTest extends NsTest {
             }
         );
     }
+
 
     @Override
     public void runMain() {
