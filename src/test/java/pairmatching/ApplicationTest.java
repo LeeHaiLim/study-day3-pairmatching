@@ -29,10 +29,10 @@ class ApplicationTest extends NsTest {
     void 홀수_인원_페어_매칭() {
         assertShuffleTest(
             () -> {
-                run("1", "백엔드, 레벨1, 자동차경주", "Q");
-                assertThat(output()).contains("태웅 : 백호", "치수 : 태섭 : 대만");
+                run("1", "백엔드, 레벨1, 로또", "Q");
+                assertThat(output()).contains("태웅 : 태섭", "치수 : 백호 : 가나");
             },
-            Arrays.asList("태웅", "백호", "치수", "태섭", "대만")
+            Arrays.asList("태웅", "태섭", "치수", "백호", "가나")
         );
     }
 

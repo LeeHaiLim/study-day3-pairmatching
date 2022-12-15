@@ -1,6 +1,7 @@
 package pairmatching.repository;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import pairmatching.domain.Crew;
@@ -36,13 +37,13 @@ class MatchingRepositoryTest {
     @Test
     void findByMission() {
         MissionGroup racingCar = MissionGroup.of(List.of("백엔드", "레벨1", "자동차경주"));
-        Assertions.assertThat(matchingRepository.findByMission(racingCar)).isPresent();
+        Assertions.assertThat(matchingRepository.findByMission(racingCar)).isNotNull();
     }
 
     @Test
     void getSameLevelPairs() {
         MissionGroup racingCar = MissionGroup.of(List.of("백엔드", "레벨1", "자동차경주"));
-        List<Pair> pairs = matchingRepository.getSameLevelPairs(racingCar).get();
+        List<Pair> pairs = matchingRepository.getSameLevelPairs(racingCar);
         Assertions.assertThat(pairs.size()).isEqualTo(4);
 
     }
@@ -50,8 +51,13 @@ class MatchingRepositoryTest {
     @Test
     void getSameLevelPairs2() {
         MissionGroup payment = MissionGroup.of(List.of("백엔드", "레벨2", "결제"));
-        List<Pair> pairs = matchingRepository.getSameLevelPairs(payment).get();
+        List<Pair> pairs = matchingRepository.getSameLevelPairs(payment);
         Assertions.assertThat(pairs.size()).isEqualTo(2);
 
+    }
+
+    @AfterAll
+    static void end() {
+        matchingRepository.clear();
     }
 }
